@@ -77,10 +77,6 @@ public class Po implements CommandExecutor {
             }
             return true;
         }
-
-
-
-
         if (args.length == 2 && args[0].equalsIgnoreCase("list")) {
             String arenaName = args[1];
             File arenaFolder = new File(Configuration.mainCommand+"-arenas", arenaName);
