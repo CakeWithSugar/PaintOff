@@ -1,0 +1,93 @@
+name: PaintOff_Beta
+version: '2.0.0-BETA'
+main: mc.cws.paintOff.PaintOffMain
+api-version: '1.21'
+authors: [ CWS ]
+commands:
+  po:
+    description: Befehle für PaintOff
+    permission: po.admin
+    subcommands:
+      create:
+        description: Erstelle eine neue Arena
+        permission: po.admin
+        usage: /po create [Arenaname]
+      list:
+        description: Liste der Arenen anzeigen
+        permission: po.player
+        usage: /po list
+      delete:
+        description: Lösche eine Arena
+        permission: po.admin
+        usage: /po delete [Arenaname]
+      spawn:
+        description: Erstelle einen Spielerspawn.
+        permission: po.admin
+        usage: /po spawn [Arenaname]
+      help:
+        description: Zeigt die Hilfe.
+        permission: po.admin
+        usage: /po help
+      lobby:
+        description: Setzt den Lobbyspawn.
+        permission: po.admin
+        usage: /po lobby
+      info:
+        description: Zeigt Informationen zur Queue an.
+        permission: po.player
+        usage: /po info
+      mechanik:
+        description: Zeigt Informationen zu den Sonderrollen.
+        permission: po.player
+        usage: /po rollen
+      pos1:
+        description: Setzt die Position 1.
+        permission: po.admin
+        usage: /po pos1
+      pos2:
+        description: Setzt die Position 2.
+        permission: po.admin
+        usage: /po pos2
+      paste:
+        description: Pastet eine Arena.
+        permission: po.admin
+        usage: /po paste
+  poqueue:
+    description: Zeigt Informationen zur Queue an.
+    permission: po.player
+    usage: /poqueue
+  poleave:
+    description: Verlasse die Queue.
+    permission: po.player
+    usage: /poleave
+  popoints:
+    description: Zeigt die Punkte an.
+    permission: po.player
+    usage: /popoints
+  postart:
+    description: Startet das Spiel.
+    permission: po.admin
+    usage: /postart
+  postop:
+    description: Beendet das Spiel.
+    permission: po.admin
+    usage: /postop
+  poarsenal:
+    description: Zeigt das >> Waffel << Arsenal an.
+    permission: po.player
+    usage: /poarsenal
+  pomenu:
+    description: Zeigt das >> Menu << an.
+    permission: po.admin
+    usage: /pomenu
+  pokill:
+    description: Töte dich!.
+    permission: po.admin
+    usage: /pokill
+permissions:
+  po.admin:
+    description: Adminberechtigung
+    default: op
+  po.player:
+    description: Spielerberechtigung
+    default: true
