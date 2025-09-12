@@ -4,88 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0192e515-b822-4ea3-b71f-aa2cf7f4760a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Configuration.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Arena/Arena.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Arena/ArenaAuswahl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Extras/ClearInventory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Extras/Colorer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Extras/Painter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Extras/Resetables.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Extras/Unpaintables.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Items/ArsenalInventoryListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Items/Primarys/Haepec/HaeSchnipsLehr.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Items/Primarys/None/Abwandlung/FiftySnipEx.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Items/Primarys/None/Abwandlung/Pikolat.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Items/Primarys/None/Blubber.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Items/Primarys/None/Mikrolat.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Items/Primarys/None/Musket.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Items/Primarys/None/Quinter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Items/Primarys/None/SchnipsLehr.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Items/Primarys/None/Schweddler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Items/Primarys/None/SniplEx.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Items/Primarys/None/Testing.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Items/Primarys/None/TriAtler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Items/Primarys/Prime/PrimeMillilat.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Items/Primarys/Prime/PrimeSchweddler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Items/Primarys/Pyrex/PyrBlubber.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Items/Primarys/Pyrex/PyrTwentySniplEx.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Items/Primarys/Tulipa/TulQuinter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Items/Primarys/Tulipa/TulTriAtler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Items/Secondarys/Amalgamalge.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Items/Secondarys/Aufdecker.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Items/Secondarys/Dreifarber.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Items/Secondarys/Klotzbombe.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Items/Secondarys/Klotzmine.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Items/Secondarys/Kreuzer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Items/Secondarys/Marker.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Items/Secondarys/Reihenzieher.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Items/Secondarys/Vernebler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Items/TeleportPad.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Items/Ultimates/Eruptor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Items/Ultimates/Gammablitzer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Items/Ultimates/GenetischerBoost.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Items/Ultimates/GlitzerMeteor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Items/Ultimates/Klotzhagel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Items/Ultimates/Lauffeuer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Items/Ultimates/PlatzRegen.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Items/Ultimates/Sonnenwindler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Items/Ultimates/Tornedo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Items/Ultimates/Wellenschlag.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Management/DeadStop.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Management/InGame/Game.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Management/InGame/SnowballEffect.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Management/Queue.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Management/Scoreboards/ColorTeam.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Management/Scoreboards/Scoreboards.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Management/Start.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Management/Stop.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Management/Verteiler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Points/Points.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Resources/ExtraItems.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Resources/FulePoints.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Resources/UltPoints.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Shop/Lists.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Shop/Preis.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Shop/ShopInventory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Shop/ShopObjects.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/PaintOffMain.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Po/ArenaManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Po/Executors/Po.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Po/Executors/PoArsenal.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Po/Executors/PoLeave.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Po/Executors/PoMenu.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Po/Executors/PoPoints.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Po/Executors/PoQueue.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Po/Executors/PoStart.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Po/Executors/PoStop.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Po/JoinerAndLeaver.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Po/Modifications.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Po/TeleportInventoryListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Patchnotes" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/plugin.yml" afterDir="false" />
+    <list default="true" id="0192e515-b822-4ea3-b71f-aa2cf7f4760a" name="Changes" comment="blah">
+      <change afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Extras/Underpaintable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Extras/Painter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Extras/Painter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Extras/Unpaintables.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Extras/Unpaintables.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/PaintOff-2.0.0-BETA-shaded.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/PaintOff-2.0.0-BETA-shaded.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/PaintOff-2.0.0-BETA.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/original-PaintOff-2.0.0-BETA.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/original-PaintOff-2.0.0-BETA.jar" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -147,7 +73,7 @@
     &quot;Maven.PaintOff [verify].executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/biela&quot;,
@@ -176,7 +102,28 @@
       <option name="presentableId" value="Default" />
       <updated>1748174723608</updated>
     </task>
+    <task id="LOCAL-00001" summary="blah">
+      <option name="closed" value="true" />
+      <created>1757241040363</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1757241040363</updated>
+    </task>
+    <task id="LOCAL-00002" summary="blah">
+      <option name="closed" value="true" />
+      <created>1757241435904</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1757241435904</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="blah" />
+    <option name="LAST_COMMIT_MESSAGE" value="blah" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

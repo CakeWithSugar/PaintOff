@@ -516,9 +516,9 @@ public class Unpaintables {
     public static boolean isUnpaintable(Material material, Location targetBlock) {
         // Get the block above
         Block blockAbove = targetBlock.getBlock().getRelative(0, 1, 0);
+        Material materialAbove = blockAbove.getType();
 
-        // If there's air above, check if the material is in the unpaintable list
-        if (blockAbove.getType() == Material.AIR) {
+        if ((Underpaintable.underpaintableBlocks.contains(materialAbove))) {
             return unpaintableBlocks.contains(material);
         }
         // If the block is in the resetable list, set it to air
