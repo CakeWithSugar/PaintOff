@@ -1,6 +1,9 @@
 package mc.cws.paintOff.Po;
 
 import mc.cws.paintOff.Configuration;
+import mc.cws.paintOff.Game.Management.Start;
+import mc.cws.paintOff.Game.Management.Stop;
+import mc.cws.paintOff.Game.Management.Verteiler;
 import mc.cws.paintOff.PaintOffMain;
 import org.bukkit.*;
 import org.bukkit.block.Block;
@@ -235,6 +238,10 @@ public class ArenaManager {
 
             // Second pass: process blocks from top to bottom
             int blocksProcessed = 0;
+            String colorA;
+            String colorB;
+            colorA = Stop.getColorNameA(n);
+            colorB = Stop.getColorNameB(n);
             for (String blockLine : blockLines) {
                 String[] parts = blockLine.split(",", 4);
                 if (parts.length < 4) {
@@ -298,9 +305,21 @@ public class ArenaManager {
                     if (material != null) {
                         try {
                             if (blockData != null) {
-                                block.setBlockData(blockData, false);
-                                if (Configuration.debugger) {
-                                    System.out.println("Set to: " + blockData);
+                                if (blockData.getMaterial() == Material.GLASS) {
+                                    if (Configuration.debugger) {
+                                        System.out.println("Glass Found!");
+                                    }
+                                    block.setType(Material.valueOf(colorA+"_STAINED_GLASS"), false);
+                                } else if (blockData.getMaterial() == Material.TINTED_GLASS) {
+                                    if (Configuration.debugger) {
+                                        System.out.println("Stained Glass Found!");
+                                    }
+                                    block.setType(Material.valueOf(colorB+"_STAINED_GLASS"), false);
+                                } else {
+                                    if (Configuration.debugger) {
+                                        System.out.println("Set to: " + blockData);
+                                    }
+                                    block.setBlockData(blockData, false);
                                 }
                             } else {
                                 block.setType(material, false);

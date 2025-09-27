@@ -35,9 +35,21 @@ import java.io.File;
 import java.util.Objects;
 
 public final class PaintOffMain extends JavaPlugin {
-
+//    public LangLoader langLoader;
     @Override
     public void onEnable() {
+//        langLoader = new LangLoader();
+//
+//        Path langDir = getDataFolder().toPath().resolve("languages");
+//        createDefaults(langDir);
+//
+//        langLoader = new LangLoader();
+//
+//        try {
+//            langLoader.load(langDir);
+//        } catch (IOException e) {
+//            getLogger().severe("LangLoader-Fehler: " + e.getMessage());
+//        }
         // Set plugin instance first
         Queue.setPlugin(this);
         Start.setPlugin(this);

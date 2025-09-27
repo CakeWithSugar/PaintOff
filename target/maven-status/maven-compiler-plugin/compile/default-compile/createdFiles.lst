@@ -58,6 +58,7 @@ mc\cws\paintOff\Game\Extras\ClearInventory.class
 mc\cws\paintOff\Game\Items\Ultimates\Klotzhagel.class
 mc\cws\paintOff\Game\Items\Ultimates\Sonnenwindler.class
 mc\cws\paintOff\Game\Items\Secondarys\Klotzmine.class
+mc\cws\paintOff\Game\Extras\Underpaintable.class
 mc\cws\paintOff\Game\Items\Ultimates\Tornedo.class
 mc\cws\paintOff\Game\Extras\Resetables.class
 mc\cws\paintOff\Po\JoinerAndLeaver.class

@@ -215,11 +215,8 @@ public class Start {
             isHallowed[n] = Modifications.searchMod("HallowedEve");
             int temporalLoop = -1;
 
-            // Paste arena at the teleport location --------------------------------------------------------------------------
-            ArenaManager.pasteArena(arenaName, n);
-
-            // Process players -------------------------------------------------------------------------------------------------
             Verteiler.verteilen(n);
+            ArenaManager.pasteArena(arenaName, n);
 
             for (Player player : queueList) {
                 if (player == null || !player.isOnline()) {

@@ -4,13 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0192e515-b822-4ea3-b71f-aa2cf7f4760a" name="Changes" comment="blah">
-      <change afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Extras/Underpaintable.java" afterDir="false" />
+    <list default="true" id="0192e515-b822-4ea3-b71f-aa2cf7f4760a" name="Changes" comment="- Underpaintable hinzugefügt&#10;-&gt; Blöcke über denen kein voller Block liegt können auch eingefärbt werden">
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Extras/Painter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Extras/Painter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Extras/Unpaintables.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Extras/Unpaintables.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Management/Start.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Management/Start.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/PaintOffMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/PaintOffMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Po/ArenaManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Po/ArenaManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/PaintOff-2.0.0-BETA-shaded.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/PaintOff-2.0.0-BETA-shaded.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/PaintOff-2.0.0-BETA.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mc/cws/paintOff/Game/Extras/Painter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mc/cws/paintOff/Game/Extras/Painter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mc/cws/paintOff/Game/Extras/Underpaintable.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mc/cws/paintOff/Game/Extras/Underpaintable.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mc/cws/paintOff/Game/Extras/Unpaintables.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mc/cws/paintOff/Game/Extras/Unpaintables.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mc/cws/paintOff/Game/Management/Start.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mc/cws/paintOff/Game/Management/Start.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mc/cws/paintOff/PaintOffMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mc/cws/paintOff/PaintOffMain.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mc/cws/paintOff/Po/ArenaManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mc/cws/paintOff/Po/ArenaManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mc/cws/paintOff/Po/Executors/Po.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mc/cws/paintOff/Po/Executors/Po.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/original-PaintOff-2.0.0-BETA.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/original-PaintOff-2.0.0-BETA.jar" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -64,22 +74,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Maven.PaintOff [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.PaintOff [compile].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.PaintOff [package].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.PaintOff [test].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.PaintOff [verify].executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/biela&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Maven.PaintOff [clean].executor": "Run",
+    "Maven.PaintOff [compile].executor": "Run",
+    "Maven.PaintOff [install].executor": "Run",
+    "Maven.PaintOff [package].executor": "Run",
+    "Maven.PaintOff [test].executor": "Run",
+    "Maven.PaintOff [verify].executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/biela",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration default="true" type="JetRunConfigurationType">
       <module name="mcdev-temp-root" />
@@ -118,12 +129,29 @@
       <option name="project" value="LOCAL" />
       <updated>1757241435904</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="- Underpaintable hinzugefügt&#10;-&gt; Blöcke über denen kein voller Block liegt können auch eingefärbt werden">
+      <option name="closed" value="true" />
+      <created>1757693617109</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1757693617109</updated>
+    </task>
+    <task id="LOCAL-00004" summary="- Underpaintable hinzugefügt&#10;-&gt; Blöcke über denen kein voller Block liegt können auch eingefärbt werden">
+      <option name="closed" value="true" />
+      <created>1757693864657</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1757693864657</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="blah" />
-    <option name="LAST_COMMIT_MESSAGE" value="blah" />
+    <MESSAGE value="- Underpaintable hinzugefügt&#10;-&gt; Blöcke über denen kein voller Block liegt können auch eingefärbt werden" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Underpaintable hinzugefügt&#10;-&gt; Blöcke über denen kein voller Block liegt können auch eingefärbt werden" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
