@@ -81,6 +81,10 @@ public class Queue {
     }
 
     public static void queueGame(Player player) {
+        queueGameReal(player, true);
+    }
+
+    public static void queueGameReal(Player player, boolean sendMessages) {
         if (Modifications.searchMod("SixPlayer")) {
             maxSize = 6;
         } else if (Modifications.searchMod("EightPlayer")) {
@@ -112,10 +116,12 @@ public class Queue {
             playerNames.get(queueNumber).add(position, player.getName());
             playerCount[queueNumber] = queueList.size();
 
-            // Send join messages
-            player.sendMessage(ChatColor.GOLD + Configuration.name + " | " + ChatColor.GRAY + "Warteschlange beigetreten " +
-                    ChatColor.GOLD + "(" + (playerCount[queueNumber]) + "/" + (maxSize) + ")");
-            player.sendMessage(ChatColor.DARK_GRAY + "§o" + "jetzt in Queue: " + queueNumber);
+            // Send join messages only if requested
+            if (sendMessages) {
+                player.sendMessage(ChatColor.GOLD + Configuration.name + " | " + ChatColor.GRAY + "Warteschlange beigetreten " +
+                        ChatColor.GOLD + "(" + (playerCount[queueNumber]) + "/" + (maxSize) + ")");
+                player.sendMessage(ChatColor.DARK_GRAY + "§o" + "jetzt in Queue: " + queueNumber);
+            }
         }
         // Warteschlange aktualisieren
         updatePlayerCountDisplay(queueNumber);

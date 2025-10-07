@@ -121,7 +121,7 @@ public class UltPoints {
         return basePoints;
     }
 
-    public static int getUltWeaponByKit(Player player, int kit) {
+    public static int getUltWeaponByKit(Player player) {
         int n = -1;
 
         for (int i = 0; i <= Configuration.maxWaffen + 1; i++) {

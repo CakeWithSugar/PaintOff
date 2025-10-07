@@ -137,5 +137,18 @@ public class Underpaintable {
         underpaintableBlocks.add(Material.WAXED_COPPER_DOOR);
         underpaintableBlocks.add(Material.WAXED_WEATHERED_COPPER_DOOR);
         underpaintableBlocks.add(Material.WAXED_OXIDIZED_COPPER_DOOR);
+        
+        // Add all leaf blocks
+        underpaintableBlocks.add(Material.OAK_LEAVES);
+        underpaintableBlocks.add(Material.SPRUCE_LEAVES);
+        underpaintableBlocks.add(Material.BIRCH_LEAVES);
+        underpaintableBlocks.add(Material.JUNGLE_LEAVES);
+        underpaintableBlocks.add(Material.ACACIA_LEAVES);
+        underpaintableBlocks.add(Material.DARK_OAK_LEAVES);
+        underpaintableBlocks.add(Material.MANGROVE_LEAVES);
+        underpaintableBlocks.add(Material.CHERRY_LEAVES);
+        underpaintableBlocks.add(Material.PALE_OAK_LEAVES);
+        underpaintableBlocks.add(Material.AZALEA_LEAVES);
+        underpaintableBlocks.add(Material.FLOWERING_AZALEA_LEAVES);
     }
 }

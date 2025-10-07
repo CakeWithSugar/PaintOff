@@ -81,7 +81,11 @@ public class Unpaintables {
         unpaintableBlocks.add(Material.WAXED_EXPOSED_CUT_COPPER_STAIRS);
         unpaintableBlocks.add(Material.WAXED_WEATHERED_CUT_COPPER_STAIRS);
         unpaintableBlocks.add(Material.WAXED_OXIDIZED_CUT_COPPER_STAIRS);
-        
+        unpaintableBlocks.add(Material.RESIN_BRICK_STAIRS);
+        unpaintableBlocks.add(Material.TUFF_BRICK_STAIRS);
+        unpaintableBlocks.add(Material.TUFF_STAIRS);
+        unpaintableBlocks.add(Material.POLISHED_TUFF_STAIRS);
+
         // Copper slabs
         unpaintableBlocks.add(Material.CUT_COPPER_SLAB);
         unpaintableBlocks.add(Material.EXPOSED_CUT_COPPER_SLAB);
@@ -91,7 +95,8 @@ public class Unpaintables {
         unpaintableBlocks.add(Material.WAXED_EXPOSED_CUT_COPPER_SLAB);
         unpaintableBlocks.add(Material.WAXED_WEATHERED_CUT_COPPER_SLAB);
         unpaintableBlocks.add(Material.WAXED_OXIDIZED_CUT_COPPER_SLAB);
-        
+        unpaintableBlocks.add(Material.TUFF_SLAB);
+
         // Bamboo stairs
         unpaintableBlocks.add(Material.BAMBOO_STAIRS);
         unpaintableBlocks.add(Material.BAMBOO_MOSAIC_STAIRS);
@@ -187,7 +192,11 @@ public class Unpaintables {
         unpaintableBlocks.add(Material.CRIMSON_TRAPDOOR);
         unpaintableBlocks.add(Material.WARPED_TRAPDOOR);
         unpaintableBlocks.add(Material.BAMBOO_TRAPDOOR);
-        
+        unpaintableBlocks.add(Material.EXPOSED_COPPER_TRAPDOOR);
+        unpaintableBlocks.add(Material.WEATHERED_COPPER_TRAPDOOR);
+        unpaintableBlocks.add(Material.OXIDIZED_COPPER_TRAPDOOR);
+        unpaintableBlocks.add(Material.WAXED_EXPOSED_COPPER_TRAPDOOR);
+
         // All button blocks
         unpaintableBlocks.add(Material.ACACIA_BUTTON);
         unpaintableBlocks.add(Material.BIRCH_BUTTON);
@@ -239,6 +248,9 @@ public class Unpaintables {
         unpaintableBlocks.add(Material.CUT_SANDSTONE_SLAB);
         unpaintableBlocks.add(Material.POLISHED_BLACKSTONE_SLAB);
         unpaintableBlocks.add(Material.POLISHED_BLACKSTONE_BRICK_SLAB);
+        unpaintableBlocks.add(Material.ANDESITE_SLAB);
+        unpaintableBlocks.add(Material.GRANITE_SLAB);
+        unpaintableBlocks.add(Material.DIORITE_SLAB);
         // All fence gates
         unpaintableBlocks.add(Material.ACACIA_FENCE_GATE);
         unpaintableBlocks.add(Material.BIRCH_FENCE_GATE);
@@ -347,12 +359,7 @@ public class Unpaintables {
         unpaintableBlocks.add(Material.LEVER);
         unpaintableBlocks.add(Material.CHEST);
         unpaintableBlocks.add(Material.TRAPPED_CHEST);
-        unpaintableBlocks.add(Material.FURNACE);
-        unpaintableBlocks.add(Material.BLAST_FURNACE);
-        unpaintableBlocks.add(Material.SMOKER);
         unpaintableBlocks.add(Material.BREWING_STAND);
-        unpaintableBlocks.add(Material.JUKEBOX);
-        unpaintableBlocks.add(Material.NOTE_BLOCK);
         unpaintableBlocks.add(Material.COMMAND_BLOCK);
         unpaintableBlocks.add(Material.END_PORTAL);
         unpaintableBlocks.add(Material.END_PORTAL_FRAME);
@@ -361,34 +368,22 @@ public class Unpaintables {
         unpaintableBlocks.add(Material.ANVIL);
         unpaintableBlocks.add(Material.CHIPPED_ANVIL);
         unpaintableBlocks.add(Material.DAMAGED_ANVIL);
-        unpaintableBlocks.add(Material.CRAFTING_TABLE);
         unpaintableBlocks.add(Material.LECTERN);
         unpaintableBlocks.add(Material.BEACON);
         unpaintableBlocks.add(Material.CONDUIT);
         unpaintableBlocks.add(Material.END_GATEWAY);
         unpaintableBlocks.add(Material.NETHER_PORTAL);
         unpaintableBlocks.add(Material.END_ROD);
-        unpaintableBlocks.add(Material.END_STONE);
-        unpaintableBlocks.add(Material.END_STONE_BRICKS);
         unpaintableBlocks.add(Material.END_CRYSTAL);
 
         // Redstone-activatable blocks
         unpaintableBlocks.add(Material.REDSTONE);
         unpaintableBlocks.add(Material.REDSTONE_TORCH);
         unpaintableBlocks.add(Material.REDSTONE_WALL_TORCH);
-        unpaintableBlocks.add(Material.REDSTONE_BLOCK);
-        unpaintableBlocks.add(Material.REDSTONE_ORE);
-        unpaintableBlocks.add(Material.REDSTONE_LAMP);
         unpaintableBlocks.add(Material.DAYLIGHT_DETECTOR);
         unpaintableBlocks.add(Material.HOPPER);
-        unpaintableBlocks.add(Material.DISPENSER);
-        unpaintableBlocks.add(Material.DROPPER);
-        unpaintableBlocks.add(Material.PISTON);
-        unpaintableBlocks.add(Material.STICKY_PISTON);
-        unpaintableBlocks.add(Material.PISTON_HEAD);
         unpaintableBlocks.add(Material.SLIME_BLOCK);
         unpaintableBlocks.add(Material.HONEY_BLOCK);
-        unpaintableBlocks.add(Material.OBSERVER);
 
         unpaintableBlocks.add(Material.WHITE_BANNER);
         unpaintableBlocks.add(Material.ORANGE_BANNER);
@@ -482,6 +477,44 @@ public class Unpaintables {
 
         // Sugar Cane
         unpaintableBlocks.add(Material.SUGAR_CANE);
+        
+        // Flower Pots (empty and filled)
+        unpaintableBlocks.add(Material.FLOWER_POT);
+        unpaintableBlocks.add(Material.DECORATED_POT);
+        unpaintableBlocks.add(Material.POTTED_POPPY);
+        unpaintableBlocks.add(Material.POTTED_DANDELION);
+        unpaintableBlocks.add(Material.POTTED_OAK_SAPLING);
+        unpaintableBlocks.add(Material.POTTED_SPRUCE_SAPLING);
+        unpaintableBlocks.add(Material.POTTED_BIRCH_SAPLING);
+        unpaintableBlocks.add(Material.POTTED_JUNGLE_SAPLING);
+        unpaintableBlocks.add(Material.POTTED_ACACIA_SAPLING);
+        unpaintableBlocks.add(Material.POTTED_DARK_OAK_SAPLING);
+        unpaintableBlocks.add(Material.POTTED_RED_MUSHROOM);
+        unpaintableBlocks.add(Material.POTTED_BROWN_MUSHROOM);
+        unpaintableBlocks.add(Material.POTTED_FERN);
+        unpaintableBlocks.add(Material.POTTED_DEAD_BUSH);
+        unpaintableBlocks.add(Material.POTTED_CACTUS);
+        unpaintableBlocks.add(Material.POTTED_BLUE_ORCHID);
+        unpaintableBlocks.add(Material.POTTED_ALLIUM);
+        unpaintableBlocks.add(Material.POTTED_AZURE_BLUET);
+        unpaintableBlocks.add(Material.POTTED_RED_TULIP);
+        unpaintableBlocks.add(Material.POTTED_ORANGE_TULIP);
+        unpaintableBlocks.add(Material.POTTED_WHITE_TULIP);
+        unpaintableBlocks.add(Material.POTTED_PINK_TULIP);
+        unpaintableBlocks.add(Material.POTTED_OXEYE_DAISY);
+        unpaintableBlocks.add(Material.POTTED_CORNFLOWER);
+        unpaintableBlocks.add(Material.POTTED_LILY_OF_THE_VALLEY);
+        unpaintableBlocks.add(Material.POTTED_WITHER_ROSE);
+        unpaintableBlocks.add(Material.POTTED_BAMBOO);
+        unpaintableBlocks.add(Material.POTTED_CRIMSON_FUNGUS);
+        unpaintableBlocks.add(Material.POTTED_WARPED_FUNGUS);
+        unpaintableBlocks.add(Material.POTTED_CRIMSON_ROOTS);
+        unpaintableBlocks.add(Material.POTTED_WARPED_ROOTS);
+        unpaintableBlocks.add(Material.POTTED_AZALEA_BUSH);
+        unpaintableBlocks.add(Material.POTTED_FLOWERING_AZALEA_BUSH);
+        unpaintableBlocks.add(Material.POTTED_MANGROVE_PROPAGULE);
+        unpaintableBlocks.add(Material.POTTED_CHERRY_SAPLING);
+        unpaintableBlocks.add(Material.POTTED_TORCHFLOWER);
 
         // Nether Plants
         unpaintableBlocks.add(Material.WARPED_FUNGUS);
@@ -511,6 +544,7 @@ public class Unpaintables {
 
         unpaintableBlocks.add(Material.LADDER);
         unpaintableBlocks.add(Material.TARGET);
+        unpaintableBlocks.add(Material.CAULDRON);
     }
 
     public static boolean isUnpaintable(Material material, Location targetBlock) {

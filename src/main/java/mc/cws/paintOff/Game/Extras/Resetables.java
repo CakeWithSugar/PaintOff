@@ -35,6 +35,10 @@ public class Resetables {
         resetableBlocks.add(Material.ROSE_BUSH);
         resetableBlocks.add(Material.PEONY);
         resetableBlocks.add(Material.LILY_PAD);
+        resetableBlocks.add(Material.FLOWER_POT);
+        resetableBlocks.add(Material.AZALEA);
+        resetableBlocks.add(Material.FLOWERING_AZALEA);
+        resetableBlocks.add(Material.MOSS_CARPET);
 
         // Mushrooms
         resetableBlocks.add(Material.RED_MUSHROOM);

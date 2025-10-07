@@ -279,13 +279,10 @@ public class Stop {
                 Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, () -> {
                     for (Player player : Queue.queuedPlayers.get(queueNumber)) {
                         if (player != null && player.isOnline()) {
+                            player.sendMessage(Verteiler.colorA[queueNumber] + ChatColor.BOLD + countA + ChatColor.GRAY + " | " + Verteiler.colorB[queueNumber] + ChatColor.BOLD + countB);
                             player.sendTitle("", Verteiler.colorA[queueNumber] + ChatColor.BOLD + "> > >" + ChatColor.GRAY + " " + Verteiler.colorB[queueNumber] + ChatColor.BOLD + "< < <", 0, 20, 20);
                             player.playSound(player.getLocation(), Sound.ENTITY_CHICKEN_EGG, 0.5f, 2f);
                         }
-                    }
-                    for (Player p : Queue.queuedPlayers.get(queueNumber)) {
-                        p.sendMessage(Verteiler.colorA[queueNumber] + ChatColor.BOLD + countA + ChatColor.GRAY + " | " + Verteiler.colorB[queueNumber] + ChatColor.BOLD + countB);
-                        p.playSound(p.getLocation(), Sound.ENTITY_CHICKEN_EGG, 0.5f, 1.0f);
                     }
                     Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, () -> {
                         if (countA > countB) {

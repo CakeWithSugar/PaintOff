@@ -14,7 +14,7 @@ public class Configuration {
     // In start
     public static int spawnHight = 80; // Blocks
     public static int tick = 20; // 1/20 sec
-    public static int gameTime = 4; // Minutes
+    public static int gameTime = 8; // Minutes
 
     // In Queue
     public static int finalCounter = 10;

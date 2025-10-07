@@ -37,8 +37,8 @@ public class Scoreboards {
                 ChatColor.GRAY + "Queue: " + ChatColor.GOLD + "(" + Queue.playerCount[n] + "/" + Queue.maxSize + ")",
                 "§a",
                 ChatColor.GRAY + "Maps: ",
-                ChatColor.GREEN + ArenaAuswahl.arena1[n] + ChatColor.GRAY + " | Votes: " + ChatColor.YELLOW + ArenaAuswahl.vote[n][0],
-                ChatColor.GREEN + ArenaAuswahl.arena2[n] + ChatColor.GRAY + " | Votes: " + ChatColor.YELLOW + ArenaAuswahl.vote[n][1],
+                ChatColor.GREEN + ArenaAuswahl.arena1[n] + ChatColor.GRAY + " | " + ChatColor.YELLOW + ArenaAuswahl.vote[n][0],
+                ChatColor.GREEN + ArenaAuswahl.arena2[n] + ChatColor.GRAY + " | " + ChatColor.YELLOW + ArenaAuswahl.vote[n][1],
                 "§c",
         };
 
@@ -58,7 +58,6 @@ public class Scoreboards {
         line5.addEntry(entries[4]);
         line6.addEntry(entries[5]);
         line7.addEntry(entries[6]);
-
         objective.getScore(entries[0]).setScore(6);
         objective.getScore(entries[1]).setScore(5);
         objective.getScore(entries[2]).setScore(4);
@@ -91,11 +90,10 @@ public class Scoreboards {
             oldObj.unregister();
         }
         scoreboard.getTeams().forEach(Team::unregister);
-        Objective objective = scoreboard.registerNewObjective("playerDisplay", Criteria.DUMMY, TITLE);
+        Objective objective = scoreboard.registerNewObjective("playerDisplay", Criteria.DUMMY, TITLE + ChatColor.GRAY + " | " + ChatColor.YELLOW + (Start.remainingMinutes[n]) + ":" + (Start.remainingTens[n]) + (Start.remainingSeconds[n]));
         objective.setDisplaySlot(DisplaySlot.SIDEBAR);
 
         String[] entries = {
-                ChatColor.YELLOW + "               " + (Start.remainingMinutes[n]) + ":" + (Start.remainingTens[n]) + (Start.remainingSeconds[n]),
                 "§c",
                 ChatColor.GRAY + "Eingefärbt: " + color + Start.colored.get(player),
                 ChatColor.GRAY + "Punkte: " + color + Start.points.get(player),
@@ -119,7 +117,6 @@ public class Scoreboards {
         Team line8 = scoreboard.registerNewTeam("l8_" + n+color);
         Team line9 = scoreboard.registerNewTeam("l9_" + n+color);
         Team line10 = scoreboard.registerNewTeam("l10_" + n+color);
-        Team line11 = scoreboard.registerNewTeam("l11_" + n+color);
 
         line1.addEntry(entries[0]);
         line2.addEntry(entries[1]);
@@ -131,7 +128,6 @@ public class Scoreboards {
         line8.addEntry(entries[7]);
         line9.addEntry(entries[8]);
         line10.addEntry(entries[9]);
-        line11.addEntry(entries[10]);
 
         objective.getScore(entries[0]).setScore(10);
         objective.getScore(entries[1]).setScore(9);
@@ -143,8 +139,45 @@ public class Scoreboards {
         objective.getScore(entries[7]).setScore(3);
         objective.getScore(entries[8]).setScore(2);
         objective.getScore(entries[9]).setScore(1);
-        objective.getScore(entries[10]).setScore(0);
 
+        String playerTeam = Verteiler.getTeam(player, n);
+        if (playerTeam != null) {
+            if (playerTeam.equals("A")) {
+                Team teamA = scoreboard.registerNewTeam("teamA" + n);
+                teamA.setAllowFriendlyFire(false);
+                teamA.setCanSeeFriendlyInvisibles(true);
+                teamA.setOption(Team.Option.NAME_TAG_VISIBILITY, Team.OptionStatus.ALWAYS);
+                teamA.setOption(Team.Option.DEATH_MESSAGE_VISIBILITY, Team.OptionStatus.ALWAYS);
+                teamA.setOption(Team.Option.COLLISION_RULE, Team.OptionStatus.FOR_OTHER_TEAMS);
+                if (Verteiler.colorA[n] != null) {
+                    String colorCode = Verteiler.colorA[n].replace("§", "");
+                    ChatColor col = ChatColor.getByChar(colorCode);
+                    if (col != null) {
+                        teamA.setColor(col);
+                        teamA.setPrefix(col.toString());
+                        // Spieler zum Team hinzufügen
+                        teamA.addEntry(player.getName());  // Diese Zeile ist wichtig!
+                    }
+                }
+            } else {
+                Team teamB = scoreboard.registerNewTeam("teamB" + n);
+                teamB.setAllowFriendlyFire(false);
+                teamB.setCanSeeFriendlyInvisibles(true);
+                teamB.setOption(Team.Option.NAME_TAG_VISIBILITY, Team.OptionStatus.ALWAYS);
+                teamB.setOption(Team.Option.DEATH_MESSAGE_VISIBILITY, Team.OptionStatus.ALWAYS);
+                teamB.setOption(Team.Option.COLLISION_RULE, Team.OptionStatus.FOR_OTHER_TEAMS);
+                if (Verteiler.colorB[n] != null) {
+                    String colorCode = Verteiler.colorB[n].replace("§", "");
+                    ChatColor col = ChatColor.getByChar(colorCode);
+                    if (col != null) {
+                        teamB.setColor(col);
+                        teamB.setPrefix(col.toString());
+                        // Spieler zum Team hinzufügen
+                        teamB.addEntry(player.getName());  // Diese Zeile ist wichtig!
+                    }
+                }
+            }
+        }
         player.setScoreboard(scoreboard);
         playerScoreboards.put(player, scoreboard);
     }

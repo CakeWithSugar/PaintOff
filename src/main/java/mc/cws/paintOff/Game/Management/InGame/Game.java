@@ -106,6 +106,7 @@ public class Game implements Listener {
         getCauseOfDeath(player, killer, n);
         Points.givePoints(killer, 10);
         player.getWorld().spawnParticle(Particle.END_ROD, player.getLocation(), 20, 0.1, 0.1, 0.1, 0.05);
+        Objects.requireNonNull(killer.getLocation().getWorld()).playSound(killer.getLocation(), Sound.ENTITY_IRON_GOLEM_REPAIR, 0.5f, 2.0f);
         Arena.portToArena(player, n);
         cantUse.add(player);
         cantSneak.add(player);
@@ -153,9 +154,7 @@ public class Game implements Listener {
             if (kitNumber != kitNumberThen) {
                 // Kit wurde geändert - hier die Logik für den Kit-Wechsel
                 TeleportInventoryListener.kitChange.get(kitNumberThen).add(player);
-
-                // Ultimative Punkte zurücksetzen
-                UltPoints.removeUltPoints(player, UltPoints.getUltPoints(player));
+                Start.ultpoints.put(player, 0);
             }
             ArsenalInventoryListener.getArsenal(player);
             player.getInventory().setItem(3, null);
@@ -210,9 +209,7 @@ public class Game implements Listener {
             if (kitNumber != kitNumberThen) {
                 // Kit wurde geändert - hier die Logik für den Kit-Wechsel
                 TeleportInventoryListener.kitChange.get(kitNumberThen).add(player);
-
-                // Ultimative Punkte zurücksetzen
-                UltPoints.removeUltPoints(player, UltPoints.getUltPoints(player));
+                Start.ultpoints.put(player, 0);
             }
             ArsenalInventoryListener.getArsenal(player);
         }, (long) Configuration.respawnTime * 20L); // 10 Sekunden
@@ -231,13 +228,11 @@ public class Game implements Listener {
         String colorB = Verteiler.colorB[n];
         if (teamVictim.equals("A") && (teamKiller.equals("B"))) {
             for (Player p : inGame.get(n)) {
-                p.spigot().sendMessage(ChatMessageType.ACTION_BAR,
-                        new TextComponent(colorB + killer.getName() + ChatColor.GRAY + "  --> x  " + colorA + ChatColor.STRIKETHROUGH + victim.getName()));
+                p.sendMessage(colorB + killer.getName() + ChatColor.GRAY + "  --> x  " + colorA + ChatColor.STRIKETHROUGH + victim.getName());
             }
         } else {
             for (Player p : inGame.get(n)) {
-                p.spigot().sendMessage(ChatMessageType.ACTION_BAR,
-                        new TextComponent(colorA + killer.getName() + ChatColor.GRAY + "  --> x  " + colorB + ChatColor.STRIKETHROUGH + victim.getName()));
+                p.sendMessage(colorA + killer.getName() + ChatColor.GRAY + "  --> x  " + colorB + ChatColor.STRIKETHROUGH + victim.getName());
             }
         }
     }
@@ -250,13 +245,11 @@ public class Game implements Listener {
         String colorB = Verteiler.colorB[n];
         if (teamVictim.equals("A")) {
             for (Player p : inGame.get(n)) {
-                p.spigot().sendMessage(ChatMessageType.ACTION_BAR,
-                        new TextComponent(ChatColor.GRAY + "--> x  " + colorA + ChatColor.STRIKETHROUGH + victim.getName()));
+                p.sendMessage(ChatColor.GRAY + "--> x  " + colorA + ChatColor.STRIKETHROUGH + victim.getName());
             }
         } else {
             for (Player p : inGame.get(n)) {
-                p.spigot().sendMessage(ChatMessageType.ACTION_BAR,
-                        new TextComponent(ChatColor.GRAY + "--> x  " + colorB + ChatColor.STRIKETHROUGH + victim.getName()));
+                p.sendMessage(ChatColor.GRAY + "--> x  " + colorB + ChatColor.STRIKETHROUGH + victim.getName());
             }
         }
     }
@@ -802,7 +795,7 @@ public class Game implements Listener {
             }
             if (event.getAction() == Action.LEFT_CLICK_AIR || event.getAction() == Action.LEFT_CLICK_BLOCK){
                 // Ults
-                int ult = UltPoints.getUltWeaponByKit(player,ArsenalInventoryListener.getKitNumber(player));
+                int ult = UltPoints.getUltWeaponByKit(player);
                 if (ult == 0) {
                     event.setCancelled(true);
                     Tornedo.handleItemUsage(player);

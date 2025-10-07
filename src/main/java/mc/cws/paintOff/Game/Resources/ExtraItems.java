@@ -11,6 +11,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class ExtraItems {
     public static void getItemArsenal(Player player) {
@@ -51,7 +52,7 @@ public class ExtraItems {
         ItemStack currentItem = player.getInventory().getItem(0);
         int amount = 0;
         if (currentItem != null && currentItem.getType() != Material.AIR) {
-            if (currentItem.equals(Material.REDSTONE_BLOCK)) {
+            if (currentItem.getType().equals(Material.REDSTONE_BLOCK)) {
                 amount = currentItem.getAmount();
             } else {
                 amount = currentItem.getAmount() + 1;
@@ -59,7 +60,7 @@ public class ExtraItems {
         } else if (currentItem == null) {
             ItemStack itemKills = new ItemStack(Material.REDSTONE_BLOCK, 1);
             ItemMeta meta2 = itemKills.getItemMeta();
-            meta2.setDisplayName(color + "Keine Eliminierungen momentan!");
+            Objects.requireNonNull(meta2).setDisplayName(color + "Keine Eliminierungen momentan!");
 
             List<String> lore = new ArrayList<>();
             lore.add(ChatColor.GRAY + "Nächstes rampage Level: " + color + "§o1" + ChatColor.GRAY + " bei " + color +" 4" + ChatColor.GRAY + " Kills!");
@@ -69,22 +70,27 @@ public class ExtraItems {
             return;
         }
 
+        ItemStack killsItem = getItemStack(amount, color);
+        player.getInventory().setItem(0, killsItem);
+    }
+
+    private static ItemStack getItemStack(int amount, String color) {
         ItemStack killsItem = new ItemStack(Material.PUFFERFISH, amount);
         ItemMeta meta = killsItem.getItemMeta();
         if (meta != null) {
             meta.setDisplayName(color + "Eliminierungen");
             List<String> lore = new ArrayList<>();
-            lore.add(ChatColor.GRAY + "Erledigt: " + color + (amount-1));
+            lore.add(ChatColor.GRAY + "Erledigt: " + color + (amount -1));
 
-            if ((amount-1) < 4) {
+            if ((amount -1) < 4) {
                 lore.add(ChatColor.GRAY + "Nächstes rampage Level: " + color + "§o1" + ChatColor.GRAY + " bei " + color +" 4" + ChatColor.GRAY + " Eliminierungen!");
-            } else if ((amount-1) < 8) {
+            } else if ((amount -1) < 8) {
                 lore.add(ChatColor.GRAY + "Nächstes rampage Level: " + color + "§o2" + ChatColor.GRAY + " bei " + color +" 8" + ChatColor.GRAY + " Eliminierungen!");
-            } else if ((amount-1) < 12) {
+            } else if ((amount -1) < 12) {
                 lore.add(ChatColor.GRAY + "Nächstes rampage Level: " + color + "§o3" + ChatColor.GRAY + " bei " + color +" 12" + ChatColor.GRAY + " Eliminierungen!");
-            } else if ((amount-1) < 16) {
+            } else if ((amount -1) < 16) {
                 lore.add(ChatColor.GRAY + "Nächstes rampage Level: " + color + "§o4" + ChatColor.GRAY + " bei " + color +" 16" + ChatColor.GRAY + " Eliminierungen!");
-            } else if ((amount-1) < 20) {
+            } else if ((amount -1) < 20) {
                 lore.add(ChatColor.GRAY + "Nächstes rampage Level: " + color + "§o5" + ChatColor.GRAY + " bei " + color +" 20" + ChatColor.GRAY + " Eliminierungen!");
             } else {
                 lore.add(color + "Keine weiteren Rampage Levels!");
@@ -93,7 +99,7 @@ public class ExtraItems {
             meta.setLore(lore);
             killsItem.setItemMeta(meta);
         }
-        player.getInventory().setItem(0, killsItem);
+        return killsItem;
     }
 
     public static void getItemLeaving(Player player) {

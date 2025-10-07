@@ -144,7 +144,7 @@ public class DeadStop {
         // rejoin
         Arena.portLobbyGroup(playersCopy);
         for (Player player : playersCopy) {
-            Queue.queueGame(player);
+            Queue.queueGameReal(player, false);
         }
         String worldString = Configuration.mainCommand +n;
         World world = Bukkit.getWorld(worldString);
