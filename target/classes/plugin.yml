@@ -1,5 +1,5 @@
 name: PaintOff_Beta
-version: '2.0.0-BETA'
+version: '1.0.0-BETA'
 main: mc.cws.paintOff.PaintOffMain
 api-version: '1.21'
 authors: [ CWS ]

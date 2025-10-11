@@ -136,24 +136,19 @@ public class Klotzhagel {
         if (snowballsXTerminer.isEmpty()) {
             return;
         }
-
-        // Hole den ersten Snowball aus der Liste, aber lösche ihn nicht sofort
         Snowball snowball = snowballsXTerminer.get(0);
 
-        // Setze die Richtung und schieße den Schneeball ab
         Vector direction = player.getLocation().getDirection().normalize();
         snowball.setVelocity(direction.multiply(Klotzhagel.speed));
 
-        // Partikeleffekte
         snowball.getWorld().spawnParticle(Particle.FIREWORK, snowball.getLocation(), 5, 0.1, 0.1, 0.1, 0.5);
         snowball.setGlowing(true);
         snowball.setGravity(true);
 
-        // Zusätzliche Effekte auf alle Schneebälle
         String colorPara = Painter.getColorPara(player);
         for (Snowball sno : snowballsXTerminer) {
             Location loc = sno.getLocation();
-            sno.getWorld().spawnParticle(Particle.DRAGON_BREATH, loc, 2, 0, 0, 0, 0.01);
+            sno.getWorld().spawnParticle(Particle.WITCH, loc, 2, 0, 0, 0, 0.01);
             Verteiler.playColorParticleBubble(colorPara, loc, 0.1, 3, 0.1, Particle.DUST);
         }
 
@@ -181,10 +176,6 @@ public class Klotzhagel {
                 return;
             }
             Painter.explosionAlgorithmWithoutUltpoint(hitBlock, player, n, 2,color, multiplicator*3);
-            // Add visual effects
-            hitBlock.getWorld().spawnParticle(Particle.FLASH, hitBlock.getLocation(), 3, 0, 1, 0, 0.1);
-
-            // Play sound effect
             hitBlock.getWorld().playSound(hitBlock.getLocation(), Sound.ENTITY_GENERIC_EXPLODE, 0.5f, 1.5f);
             if (!stop.get()) {
                 stop.set(true);

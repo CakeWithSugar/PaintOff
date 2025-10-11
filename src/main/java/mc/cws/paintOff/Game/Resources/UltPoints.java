@@ -32,7 +32,6 @@ public class UltPoints {
             return;
         }
         Start.ultpoints.put(player, Start.ultpoints.get(player)+1);
-        Scoreboards.updateScoreboardGame(player);
     }
 
     public static void removeUltPoints(Player player, int cost) {
@@ -44,7 +43,6 @@ public class UltPoints {
 
         if (totalPoints <= cost) {
             Start.ultpoints.put(player, totalPoints - cost);
-            Scoreboards.updateScoreboardGame(player);
             Start.sound.put(player, true);
         }
     }
@@ -72,9 +70,6 @@ public class UltPoints {
             }
         }
         if (n == -1) return 0;
-        if (Configuration.testbuild) {
-            Configuration.unreleasedWeapons = 0;
-        }
         int basePoints;
         if (n == 0) {
             basePoints = SchnipsLehr.requiredPoints;
@@ -110,7 +105,7 @@ public class UltPoints {
             basePoints = PrimeMillilat.requiredPoints;
         } else if (n == 16) {
             basePoints = Musket.requiredPoints;
-        }  else if (n == Configuration.maxWaffen-Configuration.unreleasedWeapons+1) {  // Test weapon is kit 14 (maxWaffen+1)
+        }  else if (n == Configuration.maxWaffen+1) {
             basePoints = Testing.requiredPoints;
         } else {
             return 0;
@@ -149,7 +144,7 @@ public class UltPoints {
             basePoints = 7;
         } else if (n == 14) { // Meteor
             basePoints = 8;
-        }  else if (n == Configuration.maxWaffen-Configuration.unreleasedWeapons+1) {  // Test weapon is kit 14 (maxWaffen+1)
+        }  else if (n == Configuration.maxWaffen+1) {  // Test weapon is kit 14 (maxWaffen+1)
             basePoints = 9;
         } else {
             return 0;

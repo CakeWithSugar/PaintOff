@@ -7,6 +7,8 @@ import mc.cws.paintOff.Game.Management.Verteiler;
 import mc.cws.paintOff.PaintOffMain;
 import org.bukkit.*;
 import org.bukkit.block.Block;
+import org.bukkit.block.data.type.Snow;
+import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Snowball;
 import org.bukkit.inventory.ItemStack;
@@ -106,7 +108,6 @@ public class Eruptor {
         snowball.getWorld().spawnParticle(Particle.SOUL_FIRE_FLAME, loc, 20, 1, 0.1, 1, 0.05);
 
         // Add visual effects
-        hitBlock.getWorld().spawnParticle(Particle.FLASH, hitBlock.getLocation(), 1, 0, 1, 0, 0.1);// Play sound effect
         hitBlock.getWorld().playSound(hitBlock.getLocation(), Sound.ENTITY_DRAGON_FIREBALL_EXPLODE, 0.25f, 3.0f);
         hitBlock.getWorld().playSound(hitBlock.getLocation(), Sound.BLOCK_SCULK_SENSOR_CLICKING, 1.0f, 3.0f);
     }
@@ -129,7 +130,6 @@ public class Eruptor {
         snowball.getWorld().spawnParticle(Particle.SOUL_FIRE_FLAME, loc, 120, 3, 0, 3, 0.05);
 
         // Add visual effects
-        hitBlock.getWorld().spawnParticle(Particle.FLASH, hitBlock.getLocation(), 1, 0, 1, 0, 0.1);// Play sound effect
         hitBlock.getWorld().playSound(hitBlock.getLocation(), Sound.ENTITY_DRAGON_FIREBALL_EXPLODE, 0.25f, 3.0f);
         hitBlock.getWorld().playSound(hitBlock.getLocation(), Sound.BLOCK_SCULK_SENSOR_CLICKING, 1.0f, 3.0f);
     }
@@ -153,7 +153,6 @@ public class Eruptor {
         snowball.getWorld().spawnParticle(Particle.TOTEM_OF_UNDYING, hitBlock.getLocation().add(0, 2, 0), 30, 0, 0, 0, 1);
 
         // Add visual effects
-        hitBlock.getWorld().spawnParticle(Particle.FLASH, hitBlock.getLocation(), 1, 0, 1, 0, 0.1);
         hitBlock.getWorld().playSound(hitBlock.getLocation(), Sound.ENTITY_DRAGON_FIREBALL_EXPLODE, 0.25f, 3.0f);
         hitBlock.getWorld().playSound(hitBlock.getLocation(), Sound.BLOCK_SCULK_SENSOR_CLICKING, 1.0f, 3.0f);
     }
@@ -164,8 +163,6 @@ public class Eruptor {
         Painter.explosionAlgorithmWithoutUltpoint(hitBlock, player, n, radius3, color, damage3);
 
         // Add visual effects
-        hitBlock.getWorld().spawnParticle(Particle.FLASH, hitBlock.getLocation(), 1, 0, 1, 0, 0.1);
-        hitBlock.getWorld().spawnParticle(Particle.FLASH, hitBlock.getLocation().add(0, 5, 0), 10, 4, 1, 4, 0.1);
         snowball.getWorld().spawnParticle(Particle.FIREWORK, hitBlock.getLocation().add(0, 0.2, 0), 120, 0, 0, 0, 0.5);
         snowball.getWorld().spawnParticle(Particle.TOTEM_OF_UNDYING, hitBlock.getLocation().add(0, 2, 0), 80, 0, 0, 0, 1);
 

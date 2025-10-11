@@ -18,7 +18,6 @@ public class FulePoints implements Listener {
         for (int i = 0; i < amount; i++) {
             if (isAbleToCollect(player)) {
                 Start.fule.put(player, Start.fule.get(player)+1);
-                Scoreboards.updateScoreboardGame(player);
             }
         }
     }
@@ -32,7 +31,6 @@ public class FulePoints implements Listener {
 
         if (totalPoints >= cost) {
             Start.fule.put(player, totalPoints - cost);
-            Scoreboards.updateScoreboardGame(player);
         }
     }
 

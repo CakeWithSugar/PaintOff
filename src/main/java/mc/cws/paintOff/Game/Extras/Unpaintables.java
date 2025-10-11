@@ -323,7 +323,8 @@ public class Unpaintables {
         unpaintableBlocks.add(Material.WAXED_WEATHERED_COPPER_DOOR);
         unpaintableBlocks.add(Material.WAXED_OXIDIZED_COPPER_DOOR);
 
-        unpaintableBlocks.add(Material.CHAIN);
+        unpaintableBlocks.add(Material.IRON_CHAIN);
+        unpaintableBlocks.add(Material.COPPER_CHAIN);
         unpaintableBlocks.add(Material.COPPER_GRATE);
         unpaintableBlocks.add(Material.WAXED_COPPER_GRATE);
         unpaintableBlocks.add(Material.WAXED_WEATHERED_COPPER_GRATE);

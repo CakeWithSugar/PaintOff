@@ -47,7 +47,14 @@ C:\Users\biela\IdeaProjects\PaintOff\src\main\java\mc\cws\paintOff\Game\Items\Ul
 C:\Users\biela\IdeaProjects\PaintOff\src\main\java\mc\cws\paintOff\Game\Items\Ultimates\Tornedo.java
 C:\Users\biela\IdeaProjects\PaintOff\src\main\java\mc\cws\paintOff\Game\Items\Ultimates\Wellenschlag.java
 C:\Users\biela\IdeaProjects\PaintOff\src\main\java\mc\cws\paintOff\Game\Management\DeadStop.java
+C:\Users\biela\IdeaProjects\PaintOff\src\main\java\mc\cws\paintOff\Game\Management\InGame\DamageDealer.java
 C:\Users\biela\IdeaProjects\PaintOff\src\main\java\mc\cws\paintOff\Game\Management\InGame\Game.java
+C:\Users\biela\IdeaProjects\PaintOff\src\main\java\mc\cws\paintOff\Game\Management\InGame\Listener\BlockBreakListener.java
+C:\Users\biela\IdeaProjects\PaintOff\src\main\java\mc\cws\paintOff\Game\Management\InGame\Listener\BlockPlaceListener.java
+C:\Users\biela\IdeaProjects\PaintOff\src\main\java\mc\cws\paintOff\Game\Management\InGame\Listener\DamageListener.java
+C:\Users\biela\IdeaProjects\PaintOff\src\main\java\mc\cws\paintOff\Game\Management\InGame\Listener\DropItemListener.java
+C:\Users\biela\IdeaProjects\PaintOff\src\main\java\mc\cws\paintOff\Game\Management\InGame\Listener\ItemPickupListener.java
+C:\Users\biela\IdeaProjects\PaintOff\src\main\java\mc\cws\paintOff\Game\Management\InGame\Listener\MovementListener.java
 C:\Users\biela\IdeaProjects\PaintOff\src\main\java\mc\cws\paintOff\Game\Management\InGame\SnowballEffect.java
 C:\Users\biela\IdeaProjects\PaintOff\src\main\java\mc\cws\paintOff\Game\Management\Queue.java
 C:\Users\biela\IdeaProjects\PaintOff\src\main\java\mc\cws\paintOff\Game\Management\Scoreboards\ColorTeam.java

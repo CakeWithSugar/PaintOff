@@ -5,8 +5,6 @@ import mc.cws.paintOff.Game.Arena.Arena;
 import mc.cws.paintOff.Game.Arena.ArenaAuswahl;
 import mc.cws.paintOff.Game.Items.ArsenalInventoryListener;
 import mc.cws.paintOff.Game.Items.Primarys.Prime.PrimeMillilat;
-import mc.cws.paintOff.Game.Management.Scoreboards.Scoreboards;
-import mc.cws.paintOff.Game.Resources.ExtraItems;
 import mc.cws.paintOff.Game.Resources.UltPoints;
 import mc.cws.paintOff.Game.Management.Queue;
 import mc.cws.paintOff.Game.Management.Start;
@@ -26,12 +24,9 @@ import mc.cws.paintOff.Game.Items.Secondarys.*;
 import mc.cws.paintOff.Game.Items.Secondarys.Marker;
 import mc.cws.paintOff.Game.Items.Ultimates.*;
 import mc.cws.paintOff.Game.Extras.Painter;
-import mc.cws.paintOff.Game.Points.Points;
 import mc.cws.paintOff.PaintOffMain;
 import mc.cws.paintOff.Po.Executors.PoLeave;
 import mc.cws.paintOff.Po.TeleportInventoryListener;
-import net.md_5.bungee.api.ChatMessageType;
-import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
@@ -59,6 +54,8 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.util.Vector;
 import java.util.*;
 
+import static mc.cws.paintOff.Game.Management.InGame.DamageDealer.dealDamage;
+
 public class Game implements Listener {
     private static PaintOffMain plugin;
     public static void setPlugin(PaintOffMain plugin) {Game.plugin = plugin;}
@@ -67,20 +64,6 @@ public class Game implements Listener {
     public static final List<Player> cantUse = new ArrayList<>();
     public static final List<Player> cantSneak = new ArrayList<>();
     public static final Map<Integer, Integer> sneakTaskIds = new HashMap<>();  // Map für Task-IDs pro Spiel
-
-    public static void dealDamage(Player player,Player hurter, double damage) {
-        PotionEffect shield = player.getPotionEffect(PotionEffectType.RESISTANCE);
-        if (shield != null) {
-            return;
-        }
-        double health = player.getHealth();
-        if (health - damage <= 0) {
-            playDead(player, hurter, Start.getQueueNumber(player));
-        } else {
-            player.getWorld().playSound(player.getLocation(), Sound.ENTITY_PLAYER_HURT_SWEET_BERRY_BUSH, 0.5f, 1.0f);
-            player.setHealth(health - damage);
-        }
-    }
 
     public static void addPlayer(Player player, int n) {
         if (!inGame.containsKey(n)) {
@@ -93,316 +76,6 @@ public class Game implements Listener {
         List<Player> queuePlayers = Start.getPlayersInQueue(n);
         if (inGame.containsKey(n)) {
             inGame.get(n).removeAll(queuePlayers);
-        }
-    }
-
-    public static void playDead(Player player, Player killer, int n) {
-        // Sicherheitsabfrage
-        if (player == killer) {
-            playDeadSingle(player,n);
-        }
-        // Add potion effects
-        player.addPotionEffect(new PotionEffect(PotionEffectType.DARKNESS,(2 * 20) , 0, false, false));
-        getCauseOfDeath(player, killer, n);
-        Points.givePoints(killer, 10);
-        player.getWorld().spawnParticle(Particle.END_ROD, player.getLocation(), 20, 0.1, 0.1, 0.1, 0.05);
-        Objects.requireNonNull(killer.getLocation().getWorld()).playSound(killer.getLocation(), Sound.ENTITY_IRON_GOLEM_REPAIR, 0.5f, 2.0f);
-        Arena.portToArena(player, n);
-        cantUse.add(player);
-        cantSneak.add(player);
-        player.setHealth(20.0);
-        player.getInventory().setItem(1, null);
-        player.getInventory().setItem(5, null);
-        player.getInventory().setItem(6, null);
-        player.getInventory().setItem(7, null);
-        ExtraItems.getKills(killer);
-        Start.kills.put(killer, Start.kills.get(killer)+1);
-        controlKills(killer);
-        Scoreboards.updateScoreboardGame(killer);
-        for (int i = 0; i < Configuration.maxWaffen+1; i++) {
-            if (Start.kitNumberBefore.get(i).contains(player)) {
-                Start.kitNumberBefore.get(i).remove(player);
-                break;
-            }
-        }
-        if (Start.spawnSave1.contains(player)) {
-            player.addPotionEffect(new PotionEffect(PotionEffectType.RESISTANCE,(10 * 20) , 0, false, false));
-        } else if (Start.spawnSave2.contains(player)) {
-            player.addPotionEffect(new PotionEffect(PotionEffectType.RESISTANCE,(12 * 20) , 0, false, false));
-        } else if (Start.spawnSave3.contains(player)) {
-            player.addPotionEffect(new PotionEffect(PotionEffectType.RESISTANCE,(14 * 20) , 0, false, false));
-        }
-
-        Start.kitNumberBefore.get(ArsenalInventoryListener.getKitNumber(player)).add(player);
-        player.getWorld().playSound(player.getLocation(), Sound.ENTITY_GHAST_DEATH, 0.5f, 1.0f);
-
-        // Schedule return to game
-        Bukkit.getScheduler().runTaskLater(plugin, () -> {
-            for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
-                onlinePlayer.showPlayer(plugin, player);
-            }
-            cantUse.remove(player);
-            cantSneak.remove(player);
-            int kitNumber = ArsenalInventoryListener.getKitNumber(player);
-            int kitNumberThen = kitNumber;
-            for (int i = 0; i < Configuration.maxWaffen+1; i++) {
-                if (TeleportInventoryListener.kitChange.containsKey(i) && TeleportInventoryListener.kitChange.get(i).contains(player)) {
-                    kitNumberThen = i;
-                }
-            }
-            // Prüfen, ob das Kit gewechselt wurde
-            if (kitNumber != kitNumberThen) {
-                // Kit wurde geändert - hier die Logik für den Kit-Wechsel
-                TeleportInventoryListener.kitChange.get(kitNumberThen).add(player);
-                Start.ultpoints.put(player, 0);
-            }
-            ArsenalInventoryListener.getArsenal(player);
-            player.getInventory().setItem(3, null);
-            // Send message
-            player.sendMessage(ChatColor.GRAY + "§o" +"Du bist wieder im Spiel!");
-        }, Configuration.respawnTime * 20L);
-    }
-    public static void playDeadSingle(Player player, int n) {
-        // Add potion effects
-        player.addPotionEffect(new PotionEffect(PotionEffectType.DARKNESS,(2 * 20) , 0, false, false));
-        getSelfDeath(player, n);
-        player.getWorld().spawnParticle(Particle.END_ROD, player.getLocation(), 20, 0.1, 0.1, 0.1, 0.05);
-        Arena.portToArena(player, n);
-        cantUse.add(player);
-        cantSneak.add(player);
-        player.setHealth(20.0);
-        player.getInventory().setItem(1, null);
-        player.getInventory().setItem(5, null);
-        player.getInventory().setItem(6, null);
-        player.getInventory().setItem(7, null);
-        for (int i = 0; i < Configuration.maxWaffen+1; i++) {
-            if (Start.kitNumberBefore.get(i).contains(player)) {
-                Start.kitNumberBefore.get(i).remove(player);
-                break;
-            }
-        }
-        Start.kitNumberBefore.get(ArsenalInventoryListener.getKitNumber(player)).add(player);
-        player.getWorld().playSound(player.getLocation(), Sound.ENTITY_GHAST_DEATH, 0.5f, 1.0f);
-
-        if (Start.spawnSave1.contains(player)) {
-            player.addPotionEffect(new PotionEffect(PotionEffectType.RESISTANCE,(10 * 20) , 0, false, false));
-        } else if (Start.spawnSave2.contains(player)) {
-            player.addPotionEffect(new PotionEffect(PotionEffectType.RESISTANCE,(12 * 20) , 0, false, false));
-        } else if (Start.spawnSave3.contains(player)) {
-            player.addPotionEffect(new PotionEffect(PotionEffectType.RESISTANCE,(14 * 20) , 0, false, false));
-        }
-        // Schedule return to game
-        Bukkit.getScheduler().runTaskLater(plugin, () -> {
-            for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
-                onlinePlayer.showPlayer(plugin, player);
-            }
-            cantUse.remove(player);
-            cantSneak.remove(player);
-            int kitNumber = ArsenalInventoryListener.getKitNumber(player);
-            int kitNumberThen = kitNumber;
-            for (int i = 0; i < Configuration.maxWaffen+1; i++) {
-                if (TeleportInventoryListener.kitChange.containsKey(i) && TeleportInventoryListener.kitChange.get(i).contains(player)) {
-                    kitNumberThen = i;
-                }
-            }
-            // Prüfen, ob das Kit gewechselt wurde
-            if (kitNumber != kitNumberThen) {
-                // Kit wurde geändert - hier die Logik für den Kit-Wechsel
-                TeleportInventoryListener.kitChange.get(kitNumberThen).add(player);
-                Start.ultpoints.put(player, 0);
-            }
-            ArsenalInventoryListener.getArsenal(player);
-        }, (long) Configuration.respawnTime * 20L); // 10 Sekunden
-    }
-
-    public static void getCauseOfDeath(Player victim, Player killer, int n) {
-        String teamVictim = Verteiler.getTeam(victim, n);
-        if (teamVictim == null || !teamVictim.equals("A") && !teamVictim.equals("B")) {
-            return;
-        }
-        String teamKiller = Verteiler.getTeam(killer, n);
-        if (teamKiller == null || !teamKiller.equals("A") && !teamKiller.equals("B")) {
-            return;
-        }
-        String colorA = Verteiler.colorA[n];
-        String colorB = Verteiler.colorB[n];
-        if (teamVictim.equals("A") && (teamKiller.equals("B"))) {
-            for (Player p : inGame.get(n)) {
-                p.sendMessage(colorB + killer.getName() + ChatColor.GRAY + "  --> x  " + colorA + ChatColor.STRIKETHROUGH + victim.getName());
-            }
-        } else {
-            for (Player p : inGame.get(n)) {
-                p.sendMessage(colorA + killer.getName() + ChatColor.GRAY + "  --> x  " + colorB + ChatColor.STRIKETHROUGH + victim.getName());
-            }
-        }
-    }
-    public static void getSelfDeath(Player victim, int n) {
-        String teamVictim = Verteiler.getTeam(victim, n);
-        if (teamVictim == null || !teamVictim.equals("A") && !teamVictim.equals("B")) {
-            return;
-        }
-        String colorA = Verteiler.colorA[n];
-        String colorB = Verteiler.colorB[n];
-        if (teamVictim.equals("A")) {
-            for (Player p : inGame.get(n)) {
-                p.sendMessage(ChatColor.GRAY + "--> x  " + colorA + ChatColor.STRIKETHROUGH + victim.getName());
-            }
-        } else {
-            for (Player p : inGame.get(n)) {
-                p.sendMessage(ChatColor.GRAY + "--> x  " + colorB + ChatColor.STRIKETHROUGH + victim.getName());
-            }
-        }
-    }
-
-
-    @EventHandler
-    public void onArrowStuckInGround(ProjectileHitEvent event) {
-        if (event.getEntity() instanceof Arrow arrow) {
-            if (arrow.getShooter() instanceof Player shooter) {
-                int n = Start.getQueueNumber(shooter);
-                List<Player> players = inGame.get(n);
-                if (players != null && players.contains(shooter)) {
-                    arrow.remove(); // Remove the arrow when it hits the ground
-                }
-            }
-        }
-    }
-
-    @EventHandler
-    public void onPlayerMove(PlayerMoveEvent event) {
-        Player player = event.getPlayer();
-        int n = Start.getQueueNumber(player);
-        if (n == -1) return;
-
-        // Get the player's team color
-        String team = Verteiler.getTeam(player, n);
-        if (team == null) return;
-
-        // Get the block under the player
-        Block blockUnder = player.getLocation().getBlock().getRelative(0, -1, 0);
-
-        // Check if the block is painted
-        Material blockType = blockUnder.getType();
-        if (blockType == Material.valueOf(Stop.getColorNameA(n) + Painter.getBlockType()) ||
-                blockType == Material.valueOf(Stop.getColorNameB(n) + Painter.getBlockType())) {
-
-            // Get the color name from the material
-            String blockColor = blockType.name().replace(Painter.getBlockType(), "");
-
-            // Determine if it's enemy color
-            boolean isEnemyColor = false;
-
-            if (team.equals("A")) {
-                isEnemyColor = blockColor.equals(Stop.getColorNameB(n));
-            } else if (team.equals("B")) {
-                isEnemyColor = blockColor.equals(Stop.getColorNameA(n));
-            }
-
-            // Apply slow effect if on enemy color
-            if (isEnemyColor) {
-                player.addPotionEffect(new PotionEffect(PotionEffectType.SLOWNESS, 1, 2, false, false));
-            } else {
-                // Remove slow effect if not on enemy color
-                player.removePotionEffect(PotionEffectType.SLOWNESS);
-            }
-        }
-        // Check if player is in water/lava
-        Block block = player.getLocation().getBlock();
-        if (block.getType() == Material.WATER ||
-                block.getType() == Material.POWDER_SNOW ||
-                block.getType() == Material.LAVA ||
-                block.getType() == Material.CAMPFIRE ||
-                block.getType() == Material.FIRE ||
-                block.getType() == Material.SOUL_CAMPFIRE) {
-            if (inGame.get(n) != null && inGame.get(n).contains(player)) {
-                // Verstecke den Spieler von anderen Spielern
-                for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
-                    if (!onlinePlayer.equals(player)) {
-                        onlinePlayer.hidePlayer(plugin, player);
-                    }
-                }
-                playDeadSingle(player, n);
-            }
-        }
-    }
-
-    @EventHandler
-    public void onItemPickup(PlayerPickupItemEvent event) {
-        // Get the player who is trying to pick up the item
-        Player player = event.getPlayer();
-        int n = Start.getQueueNumber(player);
-        if ((inGame.containsKey(n) && inGame.get(n).contains(player)) ||
-                (mc.cws.paintOff.Game.Management.Queue.queuedPlayers.containsKey(n) && mc.cws.paintOff.Game.Management.Queue.queuedPlayers.get(n).contains(player))) {
-            event.setCancelled(true);
-        }
-    }
-
-    @EventHandler
-    public void onPlayerDamage(EntityDamageEvent event) {
-        if (!(event.getEntity() instanceof Player player)) return;
-
-        int n = Start.getQueueNumber(player);
-        if ((inGame.containsKey(n) && inGame.get(n).contains(player)) || 
-            (mc.cws.paintOff.Game.Management.Queue.queuedPlayers.containsKey(n) && mc.cws.paintOff.Game.Management.Queue.queuedPlayers.get(n).contains(player))) {
-            event.setCancelled(true); // Verhindere den Tod
-        }
-    }
-
-    @EventHandler
-    public void onPlayerDeath(PlayerDeathEvent event) {
-        Player player = event.getEntity();
-        int n = Start.getQueueNumber(player);
-
-        if ((inGame.containsKey(n) && inGame.get(n).contains(player)) || 
-            (mc.cws.paintOff.Game.Management.Queue.queuedPlayers.containsKey(n) && mc.cws.paintOff.Game.Management.Queue.queuedPlayers.get(n).contains(player))) {
-            event.setDeathMessage(null);
-            event.setDroppedExp(0);
-            event.getDrops().clear();
-            // Verhindere den Todesscreen
-            player.setHealth(20.0); // Setze Gesundheit auf maximum
-            player.setHealth(2.0);  // Setze dann auf 1 Herz
-
-            // Verhindere den Todesscreen durch einen Task
-            Bukkit.getScheduler().runTask(plugin, () -> {
-                player.spigot().respawn(); // Sofortige Wiederbelebung
-            });
-        }
-    }
-
-    @EventHandler
-    public void onBlockPlace(BlockPlaceEvent event) {
-        int n = Start.getQueueNumber(event.getPlayer());
-        if (n == -1) return; // Player is not in any queue
-
-        List<Player> players = inGame.get(n);
-        List<Player> queuedPlayers = Queue.queuedPlayers.get(n);
-        if ((players != null && players.contains(event.getPlayer())) ||
-                (queuedPlayers != null && queuedPlayers.contains(event.getPlayer()))) {
-            event.setCancelled(true);
-        }
-    }
-
-    @EventHandler
-    public void onBlockBreak(BlockBreakEvent event) {
-        int n = Start.getQueueNumber(event.getPlayer());
-        if (n == -1) return; // Player is not in any queue
-
-        List<Player> players = inGame.get(n);
-        List<Player> queuedPlayers = Queue.queuedPlayers.get(n);
-        if ((players != null && players.contains(event.getPlayer())) ||
-                (queuedPlayers != null && queuedPlayers.contains(event.getPlayer()))) {
-            event.setDropItems(false);
-            event.setExpToDrop(0);
-            event.setCancelled(true);
-        }
-    }
-
-    @EventHandler
-    public void onPlayerDropItem(PlayerDropItemEvent event) {
-        int n = Start.getQueueNumber(event.getPlayer());
-        List<Player> players = inGame.get(n);
-        if (players != null && players.contains(event.getPlayer()) || Queue.queuedPlayers.get(n).contains(event.getPlayer())) {
-            event.setCancelled(true);
         }
     }
 
@@ -420,12 +93,13 @@ public class Game implements Listener {
 
     @EventHandler
     public void onInventoryClick(InventoryClickEvent event) {
-        int n = Start.getQueueNumber((Player) event.getWhoClicked());
+        Player player = (Player) event.getWhoClicked();
+        int n = Start.getQueueNumber(player);
         List<Player> players = inGame.get(n);
         List<Player> queuedPlayers = Queue.queuedPlayers.get(n);
 
-        if ((players != null && players.contains(event.getWhoClicked())) ||
-                (queuedPlayers != null && queuedPlayers.contains(event.getWhoClicked()))) {
+        if ((players != null && players.contains(player)) ||
+                (queuedPlayers != null && queuedPlayers.contains(player))) {
             event.setCancelled(true);
         }
     }
@@ -841,13 +515,64 @@ public class Game implements Listener {
     }
     //--------------------------------------------------------------------------------------------------------------------
     @EventHandler
-    public void onSnowballHit(ProjectileHitEvent event) {
-        // Check if the projectile is a snowball
+    public void onHit(ProjectileHitEvent event) {
+
+        if (event.getEntity() instanceof Arrow arrow) {
+            Player player = (Player) arrow.getShooter();
+            if (player == null) {
+                return;
+            }
+            int n = Start.getQueueNumber(player);
+            if (n == -1) {
+                return;
+            }
+            Block hitBlock = event.getHitBlock();
+            if (hitBlock == null) {
+                return;
+            }
+
+            String spawnedBy = "SchnipsLehr";
+            List<MetadataValue> metadata = arrow.getMetadata("spawnedBy");
+            if (!metadata.isEmpty()) {
+                spawnedBy = metadata.getFirst().asString();
+            }
+            Entity hitEntity = event.getHitEntity();
+            if (hitEntity instanceof Player hitPlayer) {
+                if (Verteiler.teamB.get(n).contains(hitPlayer) && Verteiler.teamA.get(n).contains(player)) {
+                    // Death
+                    if (spawnedBy.equals("Tornedo")) {// Add visual effects
+                        hitPlayer.getWorld().spawnParticle(Particle.CRIT, hitPlayer.getLocation().add(0.5, 1, 0.5), 2, 0.5, 0.5, 0.5, 0.1);
+                        dealDamage(hitPlayer, player, Configuration.killDamage);
+                        Tornedo.phaseOne(hitBlock, player, n);
+                        return;
+                    }
+                    dealDamage(hitPlayer, player, 1);
+                    return;
+                } else if (Verteiler.teamA.get(n).contains(hitPlayer) && Verteiler.teamB.get(n).contains(player)) {
+                    if (spawnedBy.equals("Tornedo")) {// Add visual effects
+                        hitPlayer.getWorld().spawnParticle(Particle.CRIT, hitPlayer.getLocation().add(0.5, 1, 0.5), 2, 0.5, 0.5, 0.5, 0.1);
+                        dealDamage(hitPlayer, player, Configuration.killDamage);
+                        Tornedo.phaseOne(hitBlock, player, n);
+                        return;
+                    }
+                    dealDamage(hitPlayer, player, 1);
+                    return;
+                }
+            }
+            if (spawnedBy.equals("Tornedo")) {
+                Tornedo.phaseOne(hitBlock, player, n);
+            }
+            List<Player> players = inGame.get(n);
+            if (players != null && players.contains(player) && player.isOnline()) {
+                arrow.remove();
+            }
+            return;
+        }
         if (event.getEntity() instanceof Snowball snowball) {
 
             // Get the player who shot the snowball
             Player player = (Player) snowball.getShooter();
-            if (player == null) {
+            if (player == null || !player.isOnline()) {
                 return;
             }
 
@@ -1208,60 +933,6 @@ public class Game implements Listener {
     }
     // ----------------------------------------------------------------------------------------------------
 
-    @EventHandler
-    public void onArrowlHit(ProjectileHitEvent event) {
-        // Check if the projectile is a snowball
-        if (event.getEntity() instanceof Arrow arrow) {
-
-            Player player = (Player) arrow.getShooter();
-            if (player == null) {
-                return;
-            }
-            int n = Start.getQueueNumber(player);
-            if (n == -1) {
-                return;
-            }
-            // Get the block the snowball hit
-            Block hitBlock = event.getHitBlock();
-            if (hitBlock == null) {
-                return;
-            }
-
-            // Get the player who shot the snowball
-            String spawnedBy = "SchnipsLehr";
-            List<MetadataValue> metadata = arrow.getMetadata("spawnedBy");
-            if (!metadata.isEmpty()) {
-                spawnedBy = metadata.getFirst().asString();
-            }
-            Entity hitEntity = event.getHitEntity();
-            if (hitEntity instanceof Player hitPlayer) {
-                if (Verteiler.teamB.get(n).contains(hitPlayer) && Verteiler.teamA.get(n).contains(player)) {
-                    // Death
-                    if (spawnedBy.equals("Tornedo")) {// Add visual effects
-                        hitPlayer.getWorld().spawnParticle(Particle.CRIT, hitPlayer.getLocation().add(0.5, 1, 0.5), 2, 0.5, 0.5, 0.5, 0.1);
-                        dealDamage(hitPlayer, player, Configuration.killDamage);
-                        Tornedo.phaseOne(hitBlock, player, n);
-                        return;
-                    }
-                    dealDamage(hitPlayer, player, 1);
-                    return;
-                } else if (Verteiler.teamA.get(n).contains(hitPlayer) && Verteiler.teamB.get(n).contains(player)) {
-                    if (spawnedBy.equals("Tornedo")) {// Add visual effects
-                        hitPlayer.getWorld().spawnParticle(Particle.CRIT, hitPlayer.getLocation().add(0.5, 1, 0.5), 2, 0.5, 0.5, 0.5, 0.1);
-                        dealDamage(hitPlayer, player, Configuration.killDamage);
-                        Tornedo.phaseOne(hitBlock, player, n);
-                        return;
-                    }
-                    dealDamage(hitPlayer, player, 1);
-                    return;
-                }
-            }
-            if (spawnedBy.equals("Tornedo")) {
-                Tornedo.phaseOne(hitBlock, player, n);
-            }
-        }
-    }
-
     public static void setCooldown(Player player, long time) {
         cantUse.add(player);
         plugin.getServer().getScheduler().runTaskLater(plugin, () -> {
@@ -1281,23 +952,23 @@ public class Game implements Listener {
     }
 
     public static void controlKills(Player player) {
-        if (Start.kills.get(player) > 20) {
+        if (Start.kills.get(player) >= 20) {
             Start.rampage.put(player, 5);
             return;
         }
-        if (Start.kills.get(player) > 16) {
+        if (Start.kills.get(player) >= 16) {
             Start.rampage.put(player, 4);
             return;
         }
-        if (Start.kills.get(player) > 12) {
+        if (Start.kills.get(player) >= 12) {
             Start.rampage.put(player, 3);
             return;
         }
-        if (Start.kills.get(player) > 8) {
+        if (Start.kills.get(player) >= 8) {
             Start.rampage.put(player, 2);
             return;
         }
-        if (Start.kills.get(player) > 4) {
+        if (Start.kills.get(player) >= 4) {
             Start.rampage.put(player, 1);
         }
     }

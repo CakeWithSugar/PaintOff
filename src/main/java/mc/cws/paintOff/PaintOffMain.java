@@ -3,6 +3,7 @@ package mc.cws.paintOff;
 import mc.cws.paintOff.Game.Arena.Arena;
 import mc.cws.paintOff.Game.Arena.ArenaAuswahl;
 import mc.cws.paintOff.Game.Items.Ultimates.*;
+import mc.cws.paintOff.Game.Management.InGame.Listener.*;
 import mc.cws.paintOff.Game.Management.InGame.SnowballEffect;
 import mc.cws.paintOff.Game.Shop.Lists;
 import mc.cws.paintOff.Game.Items.Primarys.None.Abwandlung.FiftySnipEx;
@@ -35,22 +36,72 @@ import java.io.File;
 import java.util.Objects;
 
 public final class PaintOffMain extends JavaPlugin {
-//    public LangLoader langLoader;
+
     @Override
     public void onEnable() {
-//        langLoader = new LangLoader();
-//
-//        Path langDir = getDataFolder().toPath().resolve("languages");
-//        createDefaults(langDir);
-//
-//        langLoader = new LangLoader();
-//
-//        try {
-//            langLoader.load(langDir);
-//        } catch (IOException e) {
-//            getLogger().severe("LangLoader-Fehler: " + e.getMessage());
-//        }
-        // Set plugin instance first
+        setPlugins();
+        registerListeners();
+
+        Start.initializeArrays();
+        ShopInventory.initialize();
+        Lists.initializeMaps();
+
+        // Initialize directories
+        File dataFolder = getDataFolder();
+        if (!dataFolder.exists()) {
+            if (!dataFolder.mkdirs()) {
+                getLogger().warning("Failed to create plugin directory: " + dataFolder.getAbsolutePath());
+            }
+        }
+
+        // Create po-arenas folder directly in plugin folder
+        File arenasFolder = new File(Configuration.mainCommand+"-arenas");
+        if (!arenasFolder.exists()) {
+            if (!arenasFolder.mkdirs()) {
+                getLogger().warning("Failed to create po-arenas directory: " + arenasFolder.getAbsolutePath());
+            }
+        }
+
+        Queue.setParameters();
+        Modifications.onEnable(this);
+
+
+        Objects.requireNonNull(getCommand(Configuration.mainCommand+"leave")).setExecutor(new PoLeave());
+        Objects.requireNonNull(getCommand(Configuration.mainCommand+"queue")).setExecutor(new PoQueue());
+        Objects.requireNonNull(getCommand(Configuration.mainCommand+"start")).setExecutor(new PoStart());
+        Objects.requireNonNull(getCommand(Configuration.mainCommand+"stop")).setExecutor(new PoStop());
+        Objects.requireNonNull(getCommand(Configuration.mainCommand+"points")).setExecutor(new PoPoints());
+        Objects.requireNonNull(getCommand(Configuration.mainCommand+"arsenal")).setExecutor(new PoArsenal());
+        Objects.requireNonNull(getCommand(Configuration.mainCommand+"menu")).setExecutor(new PoMenu());
+        Objects.requireNonNull(getCommand(Configuration.mainCommand)).setExecutor(new Po());
+
+        for (Player player : getServer().getOnlinePlayers()) {
+            Queue.queueGame(player);
+        }
+    }
+
+    @Override
+    public void onDisable() {
+    }
+
+    private void registerListeners () {
+        getServer().getPluginManager().registerEvents(new Game(), this);
+        getServer().getPluginManager().registerEvents(new JoinerAndLeaver(), this);
+        getServer().getPluginManager().registerEvents(new ArsenalInventoryListener(), this);
+        getServer().getPluginManager().registerEvents(new TeleportInventoryListener(), this);
+        getServer().getPluginManager().registerEvents(new Modifications(), this);
+        getServer().getPluginManager().registerEvents(new ArenaAuswahl(), this);
+        getServer().getPluginManager().registerEvents(new ShopInventory(), this);
+
+        getServer().getPluginManager().registerEvents(new DamageListener(),this);
+        getServer().getPluginManager().registerEvents(new MovementListener(),this);
+        getServer().getPluginManager().registerEvents(new ItemPickupListener(),this);
+        getServer().getPluginManager().registerEvents(new DropItemListener(),this);
+        getServer().getPluginManager().registerEvents(new BlockBreakListener(),this);
+        getServer().getPluginManager().registerEvents(new BlockPlaceListener(),this);
+    }
+
+    private void setPlugins() {
         Queue.setPlugin(this);
         Start.setPlugin(this);
         Game.setPlugin(this);
@@ -102,59 +153,5 @@ public final class PaintOffMain extends JavaPlugin {
         Eruptor.setPlugin(this);
         Klotzhagel.setPlugin(this);
         Lauffeuer.setPlugin(this);
-        
-        // Initialisiere die Arrays
-        Start.initializeArrays();
-        ShopInventory.initialize();
-        Lists.initializeMaps();
-
-        // Initialize directories
-        File dataFolder = getDataFolder();
-        if (!dataFolder.exists()) {
-            if (!dataFolder.mkdirs()) {
-                getLogger().warning("Failed to create plugin directory: " + dataFolder.getAbsolutePath());
-            }
-        }
-
-        // Create po-arenas folder directly in plugin folder
-        File arenasFolder = new File(Configuration.mainCommand+"-arenas");
-        if (!arenasFolder.exists()) {
-            if (!arenasFolder.mkdirs()) {
-                getLogger().warning("Failed to create po-arenas directory: " + arenasFolder.getAbsolutePath());
-            }
-        }
-
-        // Initialize queue parameters
-        Queue.setParameters();
-        Modifications.onEnable(this);
-
-        // Register event listeners
-        getServer().getPluginManager().registerEvents(new Game(), this);
-        getServer().getPluginManager().registerEvents(new JoinerAndLeaver(), this);
-        getServer().getPluginManager().registerEvents(new ArsenalInventoryListener(), this);
-        getServer().getPluginManager().registerEvents(new TeleportInventoryListener(), this);
-        getServer().getPluginManager().registerEvents(new Modifications(), this);
-        getServer().getPluginManager().registerEvents(new ArenaAuswahl(), this);
-        getServer().getPluginManager().registerEvents(new ShopInventory(), this);
-
-        Objects.requireNonNull(getCommand(Configuration.mainCommand+"leave")).setExecutor(new PoLeave());
-        Objects.requireNonNull(getCommand(Configuration.mainCommand+"queue")).setExecutor(new PoQueue());
-        Objects.requireNonNull(getCommand(Configuration.mainCommand+"start")).setExecutor(new PoStart());
-        Objects.requireNonNull(getCommand(Configuration.mainCommand+"stop")).setExecutor(new PoStop());
-        Objects.requireNonNull(getCommand(Configuration.mainCommand+"points")).setExecutor(new PoPoints());
-        Objects.requireNonNull(getCommand(Configuration.mainCommand+"arsenal")).setExecutor(new PoArsenal());
-        Objects.requireNonNull(getCommand(Configuration.mainCommand+"menu")).setExecutor(new PoMenu());
-        Objects.requireNonNull(getCommand(Configuration.mainCommand)).setExecutor(new Po());
-
-        for (Player player : getServer().getOnlinePlayers()) {
-            Queue.queueGame(player);
-        }
-
-        getLogger().info(" -- -- " + Configuration.name + " Main Loaded -- --");
-        getLogger().info("Plugin version: " + getDescription().getVersion());
-    }
-
-    @Override
-    public void onDisable() {
     }
 }

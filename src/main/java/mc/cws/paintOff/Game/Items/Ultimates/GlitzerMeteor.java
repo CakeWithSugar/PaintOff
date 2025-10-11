@@ -100,7 +100,7 @@ public class GlitzerMeteor {
             snowballChild.getWorld().playSound(snowballChild.getLocation(), Sound.ENTITY_FIREWORK_ROCKET_BLAST, 0.75f, 2.0f);
             Verteiler.playColorParticleBubble(colorPara, hitBlock.getLocation().add(0,1,0), radius, 20, 0.5, Particle.DUST);
             hitBlock.getWorld().spawnParticle(Particle.CRIMSON_SPORE, hitBlock.getLocation(), 15, 3, 1, 3, 0.05);
-            snowballChild.getWorld().spawnParticle(Particle.FLASH, snowballChild.getLocation(), 2, 2, 1, 2, 0.1);
+            snowballChild.getWorld().spawnParticle(Particle.WITCH, snowballChild.getLocation(), 15, 1, 1, 1, 0.05);
             snowballChild.getWorld().spawnParticle(Particle.SMOKE, snowballChild.getLocation(), 30, 0.1, 0.1, 0.1, 0.05);
             snowballChild.getWorld().spawnParticle(Particle.CAMPFIRE_COSY_SMOKE, snowballChild.getLocation(), 4, 0, 1, 0, 0.05);
         },0 ,2); // 20 Ticks = 1 Sekunde

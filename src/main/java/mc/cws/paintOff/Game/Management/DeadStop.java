@@ -171,14 +171,9 @@ public class DeadStop {
     public static void downGrade(Player player) {
         for (int i = 0; i <= ShopInventory.DURATION_ROUNDS; i++) {
             if (i > 0 && Lists.hasBonus.get(i).contains(player)) {
-                // Bewege den Spieler eine Runde nach unten
                 Lists.hasBonus.get(i).remove(player);
-
-                // Wenn wir nicht bei der letzten Runde sind, füge den Spieler zur nächsten Runde hinzu
                 if (i > 1) {
                     Lists.hasBonus.get(i - 1).add(player);
-
-                    // Bewege auch die entsprechenden Bonus-Listen
                     if (Lists.bonus25.get(i).contains(player)) {
                         Lists.bonus25.get(i).remove(player);
                         Lists.bonus25.get(i - 1).add(player);
@@ -211,7 +206,6 @@ public class DeadStop {
                         Lists.protection3.get(i - 1).add(player);
                     }
                 } else {
-                    // Letzte Runde erreicht, entferne alle Booster
                     Lists.bonus25.get(i).remove(player);
                     Lists.bonus50.get(i).remove(player);
                     Lists.bonus100.get(i).remove(player);
@@ -224,12 +218,12 @@ public class DeadStop {
                     Lists.protection3.get(i).remove(player);
                     player.sendMessage(ChatColor.RED + "Dein Booster ist abgelaufen!");
                 }
-                break; // Beende die Schleife, nachdem wir den Spieler gefunden haben
+                break;
             }
         }
     }
+
     private static void killAllSnowballs() {
-        // Kill all snowballs in all worlds
         for (org.bukkit.World world : Bukkit.getWorlds()) {
             for (Entity entity : world.getEntities()) {
                 if (entity instanceof Snowball) {
@@ -237,8 +231,6 @@ public class DeadStop {
                 }
             }
         }
-
-        // Also execute the command as a fallback
         Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "kill @e[type=minecraft:snowball]");
     }
 }

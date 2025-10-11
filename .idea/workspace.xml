@@ -4,35 +4,76 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0192e515-b822-4ea3-b71f-aa2cf7f4760a" name="Changes" comment="Arena Building Changes:&#10;- Glas und getöntes Glas, wird jetzt in die jeweilige&#10; Farbe des Teams eingefärbt, sobald das Spiel startet.">
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+    <list default="true" id="0192e515-b822-4ea3-b71f-aa2cf7f4760a" name="Changes" comment="Universelle ändereungen">
+      <change afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Management/InGame/DamageDealer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Management/InGame/Listener/BlockBreakListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Management/InGame/Listener/BlockPlaceListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Management/InGame/Listener/DamageListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Management/InGame/Listener/DropItemListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Management/InGame/Listener/ItemPickupListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Management/InGame/Listener/MovementListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Configuration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Configuration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Extras/Resetables.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Extras/Resetables.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Extras/Painter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Extras/Painter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Extras/Underpaintable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Extras/Underpaintable.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Extras/Unpaintables.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Extras/Unpaintables.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Items/ArsenalInventoryListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Items/ArsenalInventoryListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Items/Primarys/None/Abwandlung/FiftySnipEx.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Items/Primarys/None/Abwandlung/FiftySnipEx.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Items/Primarys/None/SniplEx.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Items/Primarys/None/SniplEx.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Items/Secondarys/Aufdecker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Items/Secondarys/Aufdecker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Items/Secondarys/Klotzbombe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Items/Secondarys/Klotzbombe.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Items/Secondarys/Kreuzer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Items/Secondarys/Kreuzer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Items/Secondarys/Vernebler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Items/Secondarys/Vernebler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Items/Ultimates/Eruptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Items/Ultimates/Eruptor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Items/Ultimates/GlitzerMeteor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Items/Ultimates/GlitzerMeteor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Items/Ultimates/Klotzhagel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Items/Ultimates/Klotzhagel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Items/Ultimates/Sonnenwindler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Items/Ultimates/Sonnenwindler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Items/Ultimates/Tornedo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Items/Ultimates/Tornedo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Items/Ultimates/Wellenschlag.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Items/Ultimates/Wellenschlag.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Management/DeadStop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Management/DeadStop.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Management/InGame/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Management/InGame/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Management/Queue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Management/Queue.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Management/Scoreboards/Scoreboards.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Management/Scoreboards/Scoreboards.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Management/Stop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Management/Stop.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Resources/ExtraItems.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Resources/ExtraItems.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Management/Start.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Management/Start.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Management/Verteiler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Management/Verteiler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Points/Points.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Points/Points.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Resources/FulePoints.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Resources/FulePoints.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Resources/UltPoints.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Resources/UltPoints.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/PaintOff-2.0.0-BETA.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Shop/ShopInventory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Shop/ShopInventory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/PaintOffMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/PaintOffMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Po/ArenaManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Po/ArenaManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/plugin.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/mc/cws/paintOff/Configuration.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mc/cws/paintOff/Configuration.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mc/cws/paintOff/Game/Extras/Resetables.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mc/cws/paintOff/Game/Extras/Resetables.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mc/cws/paintOff/Game/Extras/Painter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mc/cws/paintOff/Game/Extras/Painter.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/mc/cws/paintOff/Game/Extras/Underpaintable.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mc/cws/paintOff/Game/Extras/Underpaintable.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/mc/cws/paintOff/Game/Extras/Unpaintables.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mc/cws/paintOff/Game/Extras/Unpaintables.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mc/cws/paintOff/Game/Items/ArsenalInventoryListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mc/cws/paintOff/Game/Items/ArsenalInventoryListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mc/cws/paintOff/Game/Items/Primarys/None/Abwandlung/FiftySnipEx.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mc/cws/paintOff/Game/Items/Primarys/None/Abwandlung/FiftySnipEx.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mc/cws/paintOff/Game/Items/Primarys/None/SniplEx.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mc/cws/paintOff/Game/Items/Primarys/None/SniplEx.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mc/cws/paintOff/Game/Items/Secondarys/Aufdecker.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mc/cws/paintOff/Game/Items/Secondarys/Aufdecker.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mc/cws/paintOff/Game/Items/Secondarys/Klotzbombe.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mc/cws/paintOff/Game/Items/Secondarys/Klotzbombe.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mc/cws/paintOff/Game/Items/Secondarys/Kreuzer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mc/cws/paintOff/Game/Items/Secondarys/Kreuzer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mc/cws/paintOff/Game/Items/Secondarys/Vernebler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mc/cws/paintOff/Game/Items/Secondarys/Vernebler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mc/cws/paintOff/Game/Items/Ultimates/Eruptor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mc/cws/paintOff/Game/Items/Ultimates/Eruptor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mc/cws/paintOff/Game/Items/Ultimates/GlitzerMeteor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mc/cws/paintOff/Game/Items/Ultimates/GlitzerMeteor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mc/cws/paintOff/Game/Items/Ultimates/Klotzhagel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mc/cws/paintOff/Game/Items/Ultimates/Klotzhagel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mc/cws/paintOff/Game/Items/Ultimates/Sonnenwindler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mc/cws/paintOff/Game/Items/Ultimates/Sonnenwindler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mc/cws/paintOff/Game/Items/Ultimates/Tornedo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mc/cws/paintOff/Game/Items/Ultimates/Tornedo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mc/cws/paintOff/Game/Items/Ultimates/Wellenschlag.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mc/cws/paintOff/Game/Items/Ultimates/Wellenschlag.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/mc/cws/paintOff/Game/Management/DeadStop.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mc/cws/paintOff/Game/Management/DeadStop.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/mc/cws/paintOff/Game/Management/InGame/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mc/cws/paintOff/Game/Management/InGame/Game.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/mc/cws/paintOff/Game/Management/Queue.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mc/cws/paintOff/Game/Management/Queue.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mc/cws/paintOff/Game/Management/Scoreboards/Scoreboards.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mc/cws/paintOff/Game/Management/Scoreboards/Scoreboards.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mc/cws/paintOff/Game/Management/Stop.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mc/cws/paintOff/Game/Management/Stop.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mc/cws/paintOff/Game/Resources/ExtraItems.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mc/cws/paintOff/Game/Resources/ExtraItems.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mc/cws/paintOff/Game/Management/Start.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mc/cws/paintOff/Game/Management/Start.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mc/cws/paintOff/Game/Management/Verteiler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mc/cws/paintOff/Game/Management/Verteiler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mc/cws/paintOff/Game/Points/Points.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mc/cws/paintOff/Game/Points/Points.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mc/cws/paintOff/Game/Resources/FulePoints.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mc/cws/paintOff/Game/Resources/FulePoints.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/mc/cws/paintOff/Game/Resources/UltPoints.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mc/cws/paintOff/Game/Resources/UltPoints.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/original-PaintOff-2.0.0-BETA.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mc/cws/paintOff/Game/Shop/ShopInventory.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mc/cws/paintOff/Game/Shop/ShopInventory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mc/cws/paintOff/PaintOffMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mc/cws/paintOff/PaintOffMain.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mc/cws/paintOff/Po/ArenaManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mc/cws/paintOff/Po/ArenaManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plugin.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -157,49 +198,22 @@
       <option name="project" value="LOCAL" />
       <updated>1758980536741</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Universelle ändereungen">
+      <option name="closed" value="true" />
+      <created>1759868914601</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1759868914601</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="blah" />
     <MESSAGE value="- Underpaintable hinzugefügt&#10;-&gt; Blöcke über denen kein voller Block liegt können auch eingefärbt werden" />
     <MESSAGE value="Arena Building Changes:&#10;- Glas und getöntes Glas, wird jetzt in die jeweilige&#10; Farbe des Teams eingefärbt, sobald das Spiel startet." />
-    <option name="LAST_COMMIT_MESSAGE" value="Arena Building Changes:&#10;- Glas und getöntes Glas, wird jetzt in die jeweilige&#10; Farbe des Teams eingefärbt, sobald das Spiel startet." />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Items/ArsenalInventoryListener.java</url>
-          <line>471</line>
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Items/ArsenalInventoryListener.java</url>
-          <line>144</line>
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Items/ArsenalInventoryListener.java</url>
-          <line>123</line>
-          <option name="timeStamp" value="11" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Items/ArsenalInventoryListener.java</url>
-          <line>130</line>
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Items/ArsenalInventoryListener.java</url>
-          <line>137</line>
-          <option name="timeStamp" value="13" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/mc/cws/paintOff/Game/Items/ArsenalInventoryListener.java</url>
-          <line>229</line>
-          <option name="timeStamp" value="16" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="Universelle ändereungen" />
+    <option name="LAST_COMMIT_MESSAGE" value="Universelle ändereungen" />
   </component>
 </project>

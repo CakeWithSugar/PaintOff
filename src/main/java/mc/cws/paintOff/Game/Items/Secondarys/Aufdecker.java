@@ -81,9 +81,6 @@ public class Aufdecker {
                 }
             }
         }
-
-        // Add visual effects
-        Objects.requireNonNull(hitLocation.getWorld()).spawnParticle(Particle.FLASH, hitLocation, 3, 0, 1, 0, 0.1);
         hitLocation.getWorld().spawnParticle(Particle.FIREWORK, hitLocation.add(0, 1, 0), 10, 0, 0, 0, 0.5);
         hitLocation.getWorld().playSound(hitLocation, Sound.BLOCK_BEACON_ACTIVATE, 1.0f, 1.0f);
         Painter.paintBlockWithUltpoint(hitBlock,player,n,color);

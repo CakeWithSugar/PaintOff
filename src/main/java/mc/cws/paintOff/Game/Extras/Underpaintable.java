@@ -117,7 +117,8 @@ public class Underpaintable {
         underpaintableBlocks.add(Material.SOUL_LANTERN);
         underpaintableBlocks.add(Material.LANTERN);
         underpaintableBlocks.add(Material.IRON_BARS);
-        underpaintableBlocks.add(Material.CHAIN);
+        underpaintableBlocks.add(Material.IRON_CHAIN);
+        underpaintableBlocks.add(Material.COPPER_CHAIN);
         
         // Add all door blocks
         underpaintableBlocks.add(Material.ACACIA_DOOR);

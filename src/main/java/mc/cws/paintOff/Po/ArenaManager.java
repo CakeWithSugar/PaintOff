@@ -336,8 +336,6 @@ public class ArenaManager {
                     continue;
                 }
             }
-
-            System.out.println("INFO: Successfully pasted " + blocksProcessed + " blocks for arena " + arenaName);
         } catch (Exception e) {
             System.err.println("Error pasting arena blocks: " + e.getMessage());
             e.printStackTrace();
@@ -463,8 +461,6 @@ public class ArenaManager {
                     continue;
                 }
             }
-
-            System.out.println("INFO: Successfully pasted " + blocksProcessed + " blocks for arena " + arenaName);
         } catch (Exception e) {
             System.err.println("Error pasting arena blocks: " + e.getMessage());
             e.printStackTrace();

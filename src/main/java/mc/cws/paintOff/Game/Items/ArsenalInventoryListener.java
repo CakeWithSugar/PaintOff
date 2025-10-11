@@ -121,28 +121,28 @@ public class ArsenalInventoryListener implements Listener {
                     player.playSound(player.getLocation(), Sound.ENTITY_DOLPHIN_AMBIENT, 0.5f, 1.0f);
                     player.sendMessage(ChatColor.GOLD + Configuration.name + " | " + ChatColor.GRAY + "Dein Arsenal wurde auf" + ChatColor.YELLOW + " Pikolat " + ChatColor.GRAY + "aktualisiert!");
                 }
-                else if (clickedSlot == PyrBlubber.slot && Configuration.testbuild) { // Placeholder
+                else if (clickedSlot == PyrBlubber.slot) {
                     setKitNumber(player, 12);
                     player.closeInventory();
                     player.playSound(player.getLocation(), Sound.ENTITY_DOLPHIN_SPLASH, 0.25f, 3.0f);
                     player.playSound(player.getLocation(), Sound.ENTITY_DOLPHIN_AMBIENT, 0.5f, 1.0f);
                     player.sendMessage(ChatColor.GOLD + Configuration.name + " | " + ChatColor.GRAY + "Dein Arsenal wurde auf" + ChatColor.YELLOW + " Pyrex Blubber " + ChatColor.GRAY + "aktualisiert!");
                 }
-                else if (clickedSlot == HaeSchnipsLehr.slot && Configuration.testbuild) { // Placeholder
+                else if (clickedSlot == HaeSchnipsLehr.slot) {
                     setKitNumber(player, 13);
                     player.closeInventory();
                     player.playSound(player.getLocation(), Sound.ENTITY_DOLPHIN_SPLASH, 0.25f, 3.0f);
                     player.playSound(player.getLocation(), Sound.ENTITY_DOLPHIN_AMBIENT, 0.5f, 1.0f);
                     player.sendMessage(ChatColor.GOLD + Configuration.name + " | " + ChatColor.GRAY + "Dein Arsenal wurde auf" + ChatColor.YELLOW + " Haepec Schnips-Leer " + ChatColor.GRAY + "aktualisiert!");
                 }
-                else if (clickedSlot == PyrTwentySniplEx.slot && Configuration.testbuild) { // Placeholder
+                else if (clickedSlot == PyrTwentySniplEx.slot) {
                     setKitNumber(player, 14);
                     player.closeInventory();
                     player.playSound(player.getLocation(), Sound.ENTITY_DOLPHIN_SPLASH, 0.25f, 3.0f);
                     player.playSound(player.getLocation(), Sound.ENTITY_DOLPHIN_AMBIENT, 0.5f, 1.0f);
                     player.sendMessage(ChatColor.GOLD + Configuration.name + " | " + ChatColor.GRAY + "Dein Arsenal wurde auf" + ChatColor.YELLOW + " Pyrex 25er-SniplEx " + ChatColor.GRAY + "aktualisiert!");
                 }
-                else if (clickedSlot == PrimeMillilat.slot && Configuration.testbuild) {
+                else if (clickedSlot == PrimeMillilat.slot) {
                     setKitNumber(player, 15);
                     player.closeInventory();
                     player.playSound(player.getLocation(), Sound.ENTITY_DOLPHIN_SPLASH, 0.25f, 3.0f);
@@ -152,10 +152,7 @@ public class ArsenalInventoryListener implements Listener {
 
                 else if (clickedSlot == 49) {
                     Random random = new Random();
-                    if (Configuration.testbuild) {
-                        Configuration.unreleasedWeapons = 0;
-                    }
-                    int randomKitNumber = random.nextInt(Configuration.maxWaffen-Configuration.unreleasedWeapons) + 1; // Generates a number between 1 and 11
+                    int randomKitNumber = random.nextInt(Configuration.maxWaffen);
                     setKitNumber(player, randomKitNumber);
                     player.closeInventory();
                     player.playSound(player.getLocation(), Sound.ENTITY_DOLPHIN_SPLASH, 0.25f, 3.0f);
@@ -167,7 +164,7 @@ public class ArsenalInventoryListener implements Listener {
                     player.playSound(player.getLocation(), Sound.ENTITY_DOLPHIN_SPLASH, 0.25f, 3.0f);
                     player.playSound(player.getLocation(), Sound.ENTITY_DOLPHIN_AMBIENT, 0.5f, 1.0f);
                     player.sendMessage(ChatColor.GOLD + Configuration.name + " | " + ChatColor.GRAY + "Dein Arsenal wurde auf Testwaffe gesetzt!");
-                } else if (clickedSlot == 50 && Configuration.testbuild) {
+                } else if (clickedSlot == 50) {
                     player.openInventory(ARSENAL2);
                 }
             }
@@ -187,10 +184,7 @@ public class ArsenalInventoryListener implements Listener {
                     player.sendMessage(ChatColor.GOLD + Configuration.name + " | " + ChatColor.GRAY + "Dein Arsenal wurde auf" + ChatColor.YELLOW + " Musket " + ChatColor.GRAY + " aktualisiert!");
                 } else if (clickedSlot == 49) {
                     Random random = new Random();
-                    if (Configuration.testbuild) {
-                        Configuration.unreleasedWeapons = 0;
-                    }
-                    int randomKitNumber = random.nextInt(Configuration.maxWaffen - Configuration.unreleasedWeapons) + 1; // Generates a number between 1 and 11
+                    int randomKitNumber = random.nextInt(Configuration.maxWaffen);
                     setKitNumber(player, randomKitNumber);
                     player.closeInventory();
                     player.playSound(player.getLocation(), Sound.ENTITY_DOLPHIN_SPLASH, 0.25f, 3.0f);
@@ -227,16 +221,12 @@ public class ArsenalInventoryListener implements Listener {
             ARSENAL.setItem(Mikrolat.slot, Mikrolat.arsenalDisplay());
             ARSENAL.setItem(TulQuinter.slot, TulQuinter.arsenalDisplay());
             ARSENAL.setItem(Pikolat.slot, Pikolat.arsenalDisplay());
-             if (Configuration.testbuild) {
-                 ARSENAL.setItem(PyrBlubber.slot, PyrBlubber.arsenalDisplay());
-                 ARSENAL.setItem(HaeSchnipsLehr.slot, HaeSchnipsLehr.arsenalDisplay());
-                 ARSENAL.setItem(PyrTwentySniplEx.slot, PyrTwentySniplEx.arsenalDisplay());
-                 ARSENAL.setItem(PrimeMillilat.slot, PrimeMillilat.arsenalDisplay());
-             }
+            ARSENAL.setItem(PyrBlubber.slot, PyrBlubber.arsenalDisplay());
+            ARSENAL.setItem(HaeSchnipsLehr.slot, HaeSchnipsLehr.arsenalDisplay());
+            ARSENAL.setItem(PyrTwentySniplEx.slot, PyrTwentySniplEx.arsenalDisplay());
+            ARSENAL.setItem(PrimeMillilat.slot, PrimeMillilat.arsenalDisplay());
             ARSENAL.setItem(49, createRandom());
-             if (Configuration.testbuild) {
-                 ARSENAL.setItem(50, createNextSite(false));
-             }
+            ARSENAL.setItem(50, createNextSite(false));
             if (Configuration.testbuild) {ARSENAL.setItem(53, createTesting());}
         }
         if (event.getView().getTitle().equals(ARSENAL_TITLE2)) {
@@ -247,10 +237,7 @@ public class ArsenalInventoryListener implements Listener {
                     ARSENAL2.setItem(i, createGlass());
                 }
             }
-            // Setze die Items zurück
-            if (Configuration.testbuild) {
-                ARSENAL2.setItem(Musket.slot,Musket.arsenalDisplay());
-            }
+            ARSENAL2.setItem(Musket.slot,Musket.arsenalDisplay());
             ARSENAL2.setItem(49, createRandom());
             ARSENAL2.setItem(48, createNextSite(true));
         }
@@ -296,9 +283,6 @@ public class ArsenalInventoryListener implements Listener {
                 throw new IOException("Konnte temporäre Datei nicht umbenennen: " +
                         tempFile.getAbsolutePath() + " -> " + playerFile.getAbsolutePath());
             }
-
-            System.out.println("[DEBUG] Kit für " + player.getName() + " erfolgreich gespeichert");
-
         } catch (IOException e) {
             System.err.println("[ERROR] Fehler beim Speichern des Kits: " + e.getMessage());
             e.printStackTrace();
@@ -469,12 +453,7 @@ public class ArsenalInventoryListener implements Listener {
             Pikolat.getItem(player);
             Kreuzer.getItem(player);
             Tornedo.getItem(player);
-        } else if (!Configuration.testbuild) { // Stopper
-            SchnipsLehr.getItem(player);
-            Marker.getItem(player);
-            Tornedo.getItem(player);
-        }
-        else if (n == 12) {
+        } else if (n == 12) {
             PyrBlubber.getItem(player);
             Vernebler.getItem(player);
             Gammablitzer.getItem(player);

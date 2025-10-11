@@ -28,7 +28,7 @@ public class SniplEx {
     public static int coolDown = 2;
     public static double coolDownCounter = coolDown/4.0;
     public static int slot = 14;
-    public static int damage = 5;
+    public static int damage = 6;
 
     public static void getItem(Player player) {
         ItemStack carrot = new ItemStack(Material.IRON_SHOVEL, 1);

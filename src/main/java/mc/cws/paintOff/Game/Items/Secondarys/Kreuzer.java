@@ -2,7 +2,6 @@ package mc.cws.paintOff.Game.Items.Secondarys;
 
 import mc.cws.paintOff.Game.Extras.Painter;
 import mc.cws.paintOff.Game.Resources.FulePoints;
-import mc.cws.paintOff.Game.Management.InGame.Game;
 import mc.cws.paintOff.Game.Management.Start;
 import mc.cws.paintOff.Game.Management.Verteiler;
 import mc.cws.paintOff.PaintOffMain;
@@ -17,6 +16,8 @@ import org.bukkit.util.Vector;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static mc.cws.paintOff.Game.Management.InGame.DamageDealer.dealDamage;
 
 public class Kreuzer {
     private static PaintOffMain plugin;
@@ -93,7 +94,7 @@ public class Kreuzer {
                             if (playerLoc.getBlockX() == targetBlock.getX() &&
                                     playerLoc.getBlockY() == targetBlock.getY() &&
                                     playerLoc.getBlockZ() == targetBlock.getZ()) {
-                                Game.dealDamage(players,player, multiplicator + 2);
+                                dealDamage(players,player, multiplicator + 2);
                             }
                         }
                     } else if (Verteiler.teamB.get(n).contains(player)) {
@@ -102,7 +103,7 @@ public class Kreuzer {
                             if (playerLoc.getBlockX() == targetBlock.getX() &&
                                     playerLoc.getBlockY() == targetBlock.getY() &&
                                     playerLoc.getBlockZ() == targetBlock.getZ()) {
-                                Game.dealDamage(players,player, multiplicator + 2);
+                                dealDamage(players,player, multiplicator + 2);
                             }
                         }
                     }
@@ -110,9 +111,6 @@ public class Kreuzer {
                 }
             }
         }
-        // Add visual effects
-        hitBlock.getWorld().spawnParticle(Particle.FLASH, hitBlock.getLocation(), 3, 0, 1, 0, 0.1);
-        // Play sound effect
         hitBlock.getWorld().playSound(hitBlock.getLocation(), Sound.ENTITY_GENERIC_EXPLODE, 0.5f, 4.0f);
     }
 }

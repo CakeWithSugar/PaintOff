@@ -2,7 +2,6 @@ package mc.cws.paintOff.Game.Extras;
 
 import mc.cws.paintOff.Game.Resources.UltPoints;
 import mc.cws.paintOff.Game.Items.Ultimates.GlitzerMeteor;
-import mc.cws.paintOff.Game.Management.InGame.Game;
 import mc.cws.paintOff.Game.Management.Stop;
 import mc.cws.paintOff.Game.Points.Points;
 import mc.cws.paintOff.Game.Management.Start;
@@ -20,6 +19,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
+import static mc.cws.paintOff.Game.Management.InGame.DamageDealer.dealDamage;
+
 public class Painter {
     public static void paintBlockWithUltpoint(Block targetBlock, Player player, int n, String colorName) {
         String team = Verteiler.getTeam(player, n);
@@ -35,6 +36,7 @@ public class Painter {
                 Points.givePoints(player, 1);
             }
             targetBlock.setType(Material.valueOf(colorName + Start.blockName[n]));
+
             Start.colored.put(player, Start.colored.get(player)+1);
             Start.teamColored[n][teamNumber][0]++;
             String colorPara = getColorPara(player);
@@ -152,7 +154,7 @@ public class Painter {
                 Location playerLoc = p.getLocation();
                 Location blockBelowPlayer = playerLoc.clone().subtract(0, 1, 0).getBlock().getLocation();
                 if (blockBelowPlayer.equals(blockLocation)) {
-                    Game.dealDamage(p, player, damage);
+                    dealDamage(p, player, damage);
                 }
             }
         } else {
@@ -160,7 +162,7 @@ public class Painter {
                 Location playerLoc = p.getLocation();
                 Location blockBelowPlayer = playerLoc.clone().subtract(0, 1, 0).getBlock().getLocation();
                 if (blockBelowPlayer.equals(blockLocation)) {
-                    Game.dealDamage(p, player, damage);
+                    dealDamage(p, player, damage);
                 }
             }
         }
@@ -190,7 +192,7 @@ public class Painter {
                             if (playerLoc.getBlockX() == targetBlock.getX() &&
                                     playerLoc.getBlockY() == targetBlock.getY() &&
                                     playerLoc.getBlockZ() == targetBlock.getZ()) {
-                                Game.dealDamage(players,player, damage);
+                                dealDamage(players,player, damage);
                             }
                         }
                     } else if (Verteiler.teamB.get(n).contains(player)) {
@@ -199,11 +201,11 @@ public class Painter {
                             if (playerLoc.getBlockX() == targetBlock.getX() &&
                                     playerLoc.getBlockY() == targetBlock.getY() &&
                                     playerLoc.getBlockZ() == targetBlock.getZ()) {
-                                Game.dealDamage(players,player, damage);
+                                dealDamage(players,player, damage);
                             }
                         }
                     }
-                    Painter.paintBlockWithUltpoint(targetBlock,player,n,color);
+                    paintBlockWithUltpoint(targetBlock,player,n,color);
                 }
             }
         }
@@ -220,7 +222,7 @@ public class Painter {
                             if (playerLoc.getBlockX() == targetBlock.getX() &&
                                     playerLoc.getBlockY() == targetBlock.getY() &&
                                     playerLoc.getBlockZ() == targetBlock.getZ()) {
-                                Game.dealDamage(players,player, damage);
+                                dealDamage(players,player, damage);
                             }
                         }
                     } else if (Verteiler.teamB.get(n).contains(player)) {
@@ -229,11 +231,11 @@ public class Painter {
                             if (playerLoc.getBlockX() == targetBlock.getX() &&
                                     playerLoc.getBlockY() == targetBlock.getY() &&
                                     playerLoc.getBlockZ() == targetBlock.getZ()) {
-                                Game.dealDamage(players,player, damage);
+                                dealDamage(players,player, damage);
                             }
                         }
                     }
-                    Painter.paintBlockWithoutUltpoint(targetBlock,color,player);
+                    paintBlockWithoutUltpoint(targetBlock,color,player);
                 }
             }
         }

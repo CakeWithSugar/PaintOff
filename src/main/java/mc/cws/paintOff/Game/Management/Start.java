@@ -158,11 +158,6 @@ public class Start {
             plugin.getLogger().severe("Error: No available arenas found!");
             return;
         }
-
-        // Log game start attempt
-        plugin.getLogger().info("Attempting to start game in queue " + n + " with arena " + arenaName);
-
-        // Initialize game state
         try {
             // Set game state
             gameRunning[n] = true; // game is running
@@ -258,18 +253,13 @@ public class Start {
                     playerList.remove(player);
                 }
                 
-                // Add player to the new kit list if kit number is valid
-                if (Configuration.testbuild) {
-                    Configuration.unreleasedWeapons = 0;
-                }
-                if (kitNumber >= 0 && kitNumber <= Configuration.maxWaffen-Configuration.unreleasedWeapons) {
+
+                if (kitNumber >= 0 && kitNumber <= Configuration.maxWaffen) {
                     kitNumberBefore.computeIfAbsent(kitNumber, k -> new ArrayList<>()).add(player);
                 }
 
-                // Check if world exists
                 World world = Bukkit.getWorld(Configuration.mainCommand + n);
                 if (world == null) {
-                    // World does not exist, stop the game immediately
                     for (Player p : queueList) {
                         if (p != null && p.isOnline()) {
                             p.sendMessage(ChatColor.RED + Configuration.name + " | " + ChatColor.GRAY + "Nicht genug Welten! Queue wird Aufgelöst!");

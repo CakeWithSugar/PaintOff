@@ -97,7 +97,6 @@ public class Vernebler {
         int n = Start.getQueueNumber(player);
         Location loc = snowball.getLocation().add(0, 1, 0);
         snowball.getWorld().spawnParticle(Particle.SONIC_BOOM, loc, 1, 0, 0, 0, 0.1);
-        snowball.getWorld().spawnParticle(Particle.FLASH, loc, 1, 0, 0, 0, 0.1);
         Painter.paintBlockWithUltpoint(hitBlock,player,n,color);
         Vernebler.phaseTwo(player, hitBlock.getLocation(), n);
         // Play sound effect
@@ -143,7 +142,6 @@ public class Vernebler {
         Objects.requireNonNull(hitLocation.getWorld()).playSound(hitLocation, Sound.ENTITY_ZOMBIE_AMBIENT, 1.0f, 0.5f);
         Objects.requireNonNull(hitLocation.getWorld()).playSound(hitLocation, Sound.ENTITY_GHAST_HURT, 1.0f, 0.5f);
         Objects.requireNonNull(hitLocation.getWorld()).spawnParticle(Particle.SONIC_BOOM, hitLocation, 1, 0, 0, 0, 0.1);
-        Objects.requireNonNull(hitLocation.getWorld()).spawnParticle(Particle.FLASH, hitLocation, 1, 0, 0, 0, 0.1);
         AtomicBoolean stop = new AtomicBoolean(false);
         Bukkit.getScheduler().runTaskTimer(plugin, () -> {
             if (stop.get()) {

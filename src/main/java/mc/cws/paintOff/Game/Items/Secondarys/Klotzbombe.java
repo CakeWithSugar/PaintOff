@@ -68,21 +68,16 @@ public class Klotzbombe {
                 return;
             }
             Painter.explosionAlgorithm(hitBlock, player, n, 2, color, multiplicator*3);
-            // Add visual effects
-            hitBlock.getWorld().spawnParticle(Particle.FLASH, hitBlock.getLocation(), 3, 0, 1, 0, 0.1);
-
             // Play sound effect
             hitBlock.getWorld().playSound(hitBlock.getLocation(), Sound.ENTITY_GENERIC_EXPLODE, 0.5f, 1.5f);
-            if (!stop.get()) {
-                stop.set(true);
-            }
-            hitBlock.getWorld().spawnParticle(Particle.FLAME, hitBlock.getLocation().add(0, 0.5, 0), 10, 0, 1, 0, 0.2);
+            stop.set(true);
+            hitBlock.getWorld().spawnParticle(Particle.FLAME, hitBlock.getLocation().add(0, 0.5, 0), 5, 0, 1, 0, 0.2);
         }, 20);
         Bukkit.getScheduler().scheduleSyncRepeatingTask(plugin, () -> {
             if (stop.get()) {
                 return;
             }
-            hitBlock.getWorld().spawnParticle(Particle.FIREWORK, hitBlock.getLocation().add(0, 0.5, 0), 10, 0, 0, 0, 0.1);
+            hitBlock.getWorld().spawnParticle(Particle.FIREWORK, hitBlock.getLocation().add(0, 0.5, 0), 5, 0, 0, 0, 0.1);
         },0,2);
     }
 }

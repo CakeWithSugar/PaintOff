@@ -112,7 +112,6 @@ public class Points {
         }
         addPoints(player, finalAmount);
         Start.points.put(player, Start.points.get(player) + finalAmount);
-        Scoreboards.updateScoreboardGame(player);
     }
 
     public static double calcBonus(Player player) {

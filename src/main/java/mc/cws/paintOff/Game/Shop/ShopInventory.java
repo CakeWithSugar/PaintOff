@@ -135,8 +135,7 @@ public class ShopInventory implements Listener {
                         player.sendMessage(ChatColor.GRAY + "§o" + "~Keine Punkte, keine Kekse~!");
                         player.playSound(player.getLocation(), Sound.ENTITY_AXOLOTL_DEATH, 1.0f, 1.0f);
                     }
-                } else if (!Configuration.testbuild) {}
-                else if (clickedSlot == 12) {
+                } else if (clickedSlot == 12) {
                     for (int i = 0; i <= DURATION_ROUNDS; i++) {
                         if (Lists.hasBonus.get(i).contains(player)) {
                             player.sendMessage(ChatColor.GRAY + "§o" + "~Keinen zweiten Keks~!");
@@ -377,9 +376,6 @@ public class ShopInventory implements Listener {
         Booster.setItem(19, ShopObjects.points50(player));
         Booster.setItem(28, ShopObjects.points100(player));
 
-        if (!Configuration.testbuild) {
-            return;
-        }
         Booster.setItem(12, ShopObjects.recharge1(player));
         Booster.setItem(21, ShopObjects.recharge2(player));
 

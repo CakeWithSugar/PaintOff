@@ -60,9 +60,7 @@ public class Sonnenwindler {
     }
 
     public static void launch(Player player) {
-        // Play custom sound
         player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_HAT, 0.1f, 2.0f);
-        // Überprüfen, ob plugin nicht null ist
         if (plugin == null) {
             System.err.println("Plugin ist null in launchSonnenwindler!");
             return;
@@ -85,11 +83,14 @@ public class Sonnenwindler {
     }
 
     public static void phaseOne(Snowball snowball, Block hitBlock, Player player) {
+        if (hitBlock == null) {
+            return;
+        }
         Snowball snowballChild = snowball.getWorld().spawn(snowball.getLocation(), Snowball.class);
-        Vector direction = snowball.getLocation().getDirection();
-        direction.setY(hight); // Set Y component to 1.0 for upward motion
-        direction.setX(0); // Set X component to 0
-        direction.setZ(0); // Set Z component to 0
+        Vector direction = snowball.getVelocity();
+        direction.setY(hight);
+        direction.setX(0);
+        direction.setZ(0);
         snowballChild.setVelocity(direction);
         snowballChild.setShooter(snowball.getShooter());
         snowballChild.setGlowing(true);
@@ -103,15 +104,15 @@ public class Sonnenwindler {
             phaseTwo(player, snowballChild, hitBlock);
             snowballChild.remove();
         }, 20); // 20 Ticks = 1 Sekunde
-
-        // Add visual effects
-        hitBlock.getWorld().spawnParticle(Particle.FLASH, hitBlock.getLocation(), 1, 0, 1, 0, 0.1);// Play sound effect
     }
 
     private static void phaseTwo(Player player, Snowball snowball, Block hitBlock) {
+        if (hitBlock == null) {
+            return;
+        }
         AtomicReference<Double> distance = new AtomicReference<>((double) reichweite);
         Snowball snowballChild = snowball.getWorld().spawn(snowball.getLocation(), Snowball.class);
-        Vector direction = snowball.getLocation().getDirection();
+        Vector direction = snowball.getVelocity();
         direction.setY(-0.05); // Set Y component to 1.0 for upward motion
         direction.setX(0); // Set X component to 0
         direction.setZ(0); // Set Z component to 0
@@ -151,8 +152,6 @@ public class Sonnenwindler {
                 Verteiler.playColorParticleBubble(colorPara, particleLoc.add(0, 0.25,0), 0.2, 4, 0.2, Particle.DUST);
                 Verteiler.playColorParticleBubble(colorPara, snowballChild.getLocation(), 0.1, 2, 0.1, Particle.DUST);
             }
-
-// Check each player in the opposite team
             for (Player target : playersToAffect) {
                 if (target.getWorld().equals(shieldCenter.getWorld())) {
                     Location targetLoc = target.getLocation();

@@ -118,8 +118,8 @@ public class Tornedo {
             return;
         }
         String color = team.equals("A") ? Stop.getColorNameA(n) : Stop.getColorNameB(n);
-        if (rangeAddition[n] > Tornedo.lifecycle) {
-            rangeAddition[n] = Tornedo.lifecycle;
+        if (rangeAddition[n] > lifecycle) {
+            rangeAddition[n] = lifecycle;
         }
         String colorPara = Painter.getColorPara(player);
         AtomicBoolean stop = new AtomicBoolean(false);
@@ -134,19 +134,12 @@ public class Tornedo {
             hitBlock.getWorld().spawnParticle(Particle.FIREWORK, hitBlock.getLocation().add(0, 0, 0), 25, 3, 3, 3, 0.01);
         },0,4);
         Bukkit.getScheduler().runTaskLater(plugin, () -> {
-            int worth = Tornedo.explosion -1;
-            // Add visual effects
-            hitBlock.getWorld().spawnParticle(Particle.FLASH, hitBlock.getLocation(), 6, 0, 1, 0, 0.1);
-
-            // Play sound effect
+            int worth = explosion -1;
+            stop.set(true);
+            Painter.explosionAlgorithmWithoutUltpoint(hitBlock, player, n, worth, color, Tornedo.schaden);
             hitBlock.getWorld().playSound(hitBlock.getLocation(), Sound.ENTITY_DRAGON_FIREBALL_EXPLODE, 2.0f, 0.01f);
             hitBlock.getWorld().playSound(hitBlock.getLocation(), Sound.ENTITY_LIGHTNING_BOLT_THUNDER, 1.0f, 0.75f);
-            Painter.explosionAlgorithmWithoutUltpoint(hitBlock, player, n, worth, color, Tornedo.schaden);
-            if (!stop.get()) {
-                stop.set(true);
-                return;
-            }
-        }, 20L * (Tornedo.lifecycle-rangeAddition[n]));
-        rangeAddition[n] = 0;
+            rangeAddition[n] = 0;
+        }, 20L * (lifecycle-rangeAddition[n]));
     }
 }

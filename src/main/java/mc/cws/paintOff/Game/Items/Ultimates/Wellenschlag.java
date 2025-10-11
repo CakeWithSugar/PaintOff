@@ -199,7 +199,6 @@ public class Wellenschlag {
         }, 0, 2);
 
         // Add visual effects
-        hitBlock.getWorld().spawnParticle(Particle.FLASH, hitBlock.getLocation(), 1, 0, 1, 0, 0.1);// Play sound effect
         hitBlock.getWorld().spawnParticle(Particle.SONIC_BOOM, hitBlock.getLocation(), 1, 0, 1, 0, 0.1);// Play sound effect
         hitBlock.getWorld().playSound(hitBlock.getLocation(), Sound.BLOCK_SLIME_BLOCK_BREAK, 2.0f, 3.0f);
     }
@@ -209,7 +208,6 @@ public class Wellenschlag {
         Painter.explosionAlgorithmWithoutUltpoint(hitBlock, player, n, explosion, color, damage);
 
         // Add visual effects
-        hitBlock.getWorld().spawnParticle(Particle.FLASH, hitBlock.getLocation(), 2, 0, 1, 0, 0.1);
         hitBlock.getWorld().spawnParticle(Particle.SOUL_FIRE_FLAME, hitBlock.getLocation(), 25, 0, 1, 0, 0.25);
         // Play sound effect
         hitBlock.getWorld().playSound(hitBlock.getLocation(), Sound.ENTITY_DRAGON_FIREBALL_EXPLODE, 2.0f, 0.25f);

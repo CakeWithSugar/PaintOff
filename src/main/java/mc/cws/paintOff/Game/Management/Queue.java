@@ -298,7 +298,6 @@ public class Queue {
                 }
 
                 DeadStop.stopGame(queueNumber);
-                plugin.getLogger().info("Queue " + queueNumber + " has been reset and is available for new players");
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -309,17 +308,10 @@ public class Queue {
         try {
             // Delete Occupied-PoX.dat file
             File occupiedFile = new File(Configuration.mainCommand + "-lobby/OccupiedWorlds", "Occupied-" + Configuration.mainCommand + queueNumber + ".dat");
-            plugin.getLogger().info("Attempting to delete file: " + occupiedFile.getAbsolutePath());
             if (occupiedFile.exists()) {
                 boolean deleted = occupiedFile.delete();
-                if (deleted) {
-                    plugin.getLogger().info("Successfully deleted file: " + occupiedFile.getAbsolutePath());
-                } else {
-                    plugin.getLogger().warning("Failed to delete file: " + occupiedFile.getAbsolutePath());
-                    plugin.getLogger().warning("File exists: " + occupiedFile.exists());
-                    plugin.getLogger().warning("File is directory: " + occupiedFile.isDirectory());
-                    plugin.getLogger().warning("File is readable: " + occupiedFile.canRead());
-                    plugin.getLogger().warning("File is writable: " + occupiedFile.canWrite());
+                if (!deleted) {
+                    plugin.getLogger().warning("Failed to delete file: Occupied");
                 }
             } else {
                 plugin.getLogger().warning("File does not exist: " + occupiedFile.getAbsolutePath());
@@ -343,19 +335,13 @@ public class Queue {
             } else {
                 playerNames.put(queueNumber, new ArrayList<>());
             }
-
             List<Player> players = queuedPlayers.get(queueNumber);
             if (players != null) {
                 players.clear();
             } else {
                 queuedPlayers.put(queueNumber, new ArrayList<>());
             }
-            
-            // Reset player count
             playerCount[queueNumber] = 0;
-            
-            // Log the reset
-            plugin.getLogger().info("Queue " + queueNumber + " has been fully reset");
         } catch (Exception e) {
             e.printStackTrace();
             plugin.getLogger().severe("Error resetting queue " + queueNumber + ": " + e.getMessage());

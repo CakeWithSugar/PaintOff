@@ -201,13 +201,23 @@ public class Verteiler {
         Particle.DustOptions dustOptions = new Particle.DustOptions(particleColor, 1.5f);
 
         for (int i = 0; i < anzahl; i++) {
-            Objects.requireNonNull(loc.getWorld()).spawnParticle(
-                    partikelArt,
-                    loc.getX() + (Math.random() * breite * 2 - breite),
-                    loc.getY() + (höhe),
-                    loc.getZ() + (Math.random() * breite * 2 - breite),
-                    1, 0, 0, 0, 0, dustOptions
-            );
+            if (partikelArt == Particle.DUST) {
+                Objects.requireNonNull(loc.getWorld()).spawnParticle(
+                        partikelArt,
+                        loc.getX() + (Math.random() * breite * 2 - breite),
+                        loc.getY() + (höhe),
+                        loc.getZ() + (Math.random() * breite * 2 - breite),
+                        1, 0, 0, 0, 0, dustOptions
+                );
+            } else {
+                Objects.requireNonNull(loc.getWorld()).spawnParticle(
+                        partikelArt,
+                        loc.getX() + (Math.random() * breite * 2 - breite),
+                        loc.getY() + (höhe),
+                        loc.getZ() + (Math.random() * breite * 2 - breite),
+                        1, 0, 0, 0, 0
+                );
+            }
         }
     }
     public static void playColorParticleBubble(String color, Location loc, double breite, int anzahl, double höhe, Particle partikelArt) {
@@ -232,13 +242,23 @@ public class Verteiler {
         Particle.DustOptions dustOptions = new Particle.DustOptions(particleColor, 1.5f);
 
         for (int i = 0; i < anzahl; i++) {
-            Objects.requireNonNull(loc.getWorld()).spawnParticle(
-                    partikelArt,
-                    loc.getX() + (Math.random() * breite * 2 - breite),
-                    loc.getY() + (Math.random() * höhe * 2 - höhe),
-                    loc.getZ() + (Math.random() * breite * 2 - breite),
-                    1, 0, 0, 0, 0, dustOptions
-            );
+            if (partikelArt == Particle.DUST) {
+                Objects.requireNonNull(loc.getWorld()).spawnParticle(
+                        partikelArt,
+                        loc.getX() + (Math.random() * breite * 2 - breite),
+                        loc.getY() + (Math.random() * höhe * 2 - höhe),
+                        loc.getZ() + (Math.random() * breite * 2 - breite),
+                        1, 0, 0, 0, 0, dustOptions
+                );
+            } else {
+                Objects.requireNonNull(loc.getWorld()).spawnParticle(
+                        partikelArt,
+                        loc.getX() + (Math.random() * breite * 2 - breite),
+                        loc.getY() + (Math.random() * höhe * 2 - höhe),
+                        loc.getZ() + (Math.random() * breite * 2 - breite),
+                        1, 0, 0, 0, 0
+                );
+            }
         }
     }
 

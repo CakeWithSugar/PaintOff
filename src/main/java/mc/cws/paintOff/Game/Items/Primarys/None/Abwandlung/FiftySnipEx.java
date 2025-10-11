@@ -25,7 +25,7 @@ public class FiftySnipEx {
     public static int verbrauch = 18;
     public static int kugeln = 2;
     public static int coolDown = 4;
-    public static int damage = 11;
+    public static int damage = 8;
     public static double coolDownCounter = coolDown/4.0;
     public static int slot = 23;
 
