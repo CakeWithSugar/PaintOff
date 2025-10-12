@@ -1218,7 +1218,7 @@ public class Modifications implements Listener {
             for (File modFile : modFiles) {
                 try {
                     String modName = modFile.getName().replace(".txt", "");
-                    boolean isActive = Boolean.parseBoolean(Files.readAllLines(modFile.toPath()).getFirst());
+                    boolean isActive = Boolean.parseBoolean(Files.readAllLines(modFile.toPath()).get(0));
                     modCache.put(modName, isActive);
 
                     int lineNumber = startIndex + modToLineMap.size();

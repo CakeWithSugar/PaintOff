@@ -529,7 +529,7 @@ public class Game implements Listener {
             String spawnedBy = "SchnipsLehr";
             List<MetadataValue> metadata = arrow.getMetadata("spawnedBy");
             if (!metadata.isEmpty()) {
-                spawnedBy = metadata.getFirst().asString();
+                spawnedBy = metadata.get(0).asString();
             }
             Entity hitEntity = event.getHitEntity();
             if (hitEntity instanceof Player hitPlayer) {
@@ -587,7 +587,7 @@ public class Game implements Listener {
             String spawnedBy = "SchnipsLehr";
             List<MetadataValue> metadata = snowball.getMetadata("spawnedBy");
             if (!metadata.isEmpty()) {
-                spawnedBy = metadata.getFirst().asString();
+                spawnedBy = metadata.get(0).asString();
             }
 
             PotionEffect strength = player.getPotionEffect(PotionEffectType.STRENGTH);
