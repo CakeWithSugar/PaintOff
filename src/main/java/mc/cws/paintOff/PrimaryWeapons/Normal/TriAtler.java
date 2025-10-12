@@ -103,4 +103,5 @@ public class TriAtler {
             FulePoints.removeFulePoints(player,verbrauch);
         }
     }
+    // qoqiqjqjwj
 }
