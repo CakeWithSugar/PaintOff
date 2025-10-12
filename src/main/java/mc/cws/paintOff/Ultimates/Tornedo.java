@@ -34,6 +34,7 @@ public class Tornedo {
     public static double startSpeed = 0.25;
     public static double beamLength = 100.0;
     public static double helixRadius = 2.5;
+    public static double innerParticle = helixRadius/2;
     public static double helixFrequency = -2.0;
     public static int prepTime = 4;
     public static int time = (prepTime*2)+2;
@@ -120,6 +121,7 @@ public class Tornedo {
                 rotationCounter[0]++;
                 for (double d = 0; d <= beamLength; d += 0.25) {
                     Location beamLoc = startLoc.clone().add(direction.clone().multiply(d));
+                    beamLoc.getWorld().spawnParticle(Particle.ENCHANTED_HIT, beamLoc, 1, innerParticle, innerParticle, innerParticle, 0);
                     if (team.equals("A")) {
                         for (Player player1 : Verteiler.teamB.get(n)) {
                             if (player1.getLocation().distance(beamLoc) <= helixRadius) {
