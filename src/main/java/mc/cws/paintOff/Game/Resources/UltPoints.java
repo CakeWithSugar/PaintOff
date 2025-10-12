@@ -1,16 +1,16 @@
 package mc.cws.paintOff.Game.Resources;
 
 import mc.cws.paintOff.Configuration;
-import mc.cws.paintOff.PrimarysWeapons.Normal.Abwandlung.FiftySnipEx;
-import mc.cws.paintOff.PrimarysWeapons.Normal.Abwandlung.Pikolat;
-import mc.cws.paintOff.PrimarysWeapons.Haepec.HaeSchnipsLehr;
-import mc.cws.paintOff.PrimarysWeapons.Prime.PrimeMillilat;
-import mc.cws.paintOff.PrimarysWeapons.Prime.PrimeSchweddler;
-import mc.cws.paintOff.PrimarysWeapons.Pyrex.PyrTwentySniplEx;
-import mc.cws.paintOff.PrimarysWeapons.Normal.*;
-import mc.cws.paintOff.PrimarysWeapons.Pyrex.PyrBlubber;
-import mc.cws.paintOff.PrimarysWeapons.Tulipa.TulQuinter;
-import mc.cws.paintOff.PrimarysWeapons.Tulipa.TulTriAtler;
+import mc.cws.paintOff.PrimaryWeapons.Normal.Abwandlung.FiftySnipEx;
+import mc.cws.paintOff.PrimaryWeapons.Normal.Abwandlung.Pikolat;
+import mc.cws.paintOff.PrimaryWeapons.Haepec.HaeSchnipsLehr;
+import mc.cws.paintOff.PrimaryWeapons.Prime.PrimeMillilat;
+import mc.cws.paintOff.PrimaryWeapons.Prime.PrimeSchweddler;
+import mc.cws.paintOff.PrimaryWeapons.Pyrex.PyrTwentySniplEx;
+import mc.cws.paintOff.PrimaryWeapons.Normal.*;
+import mc.cws.paintOff.PrimaryWeapons.Pyrex.PyrBlubber;
+import mc.cws.paintOff.PrimaryWeapons.Tulipa.TulQuinter;
+import mc.cws.paintOff.PrimaryWeapons.Tulipa.TulTriAtler;
 import mc.cws.paintOff.Game.Management.Start;
 import mc.cws.paintOff.Game.Management.Verteiler;
 import mc.cws.paintOff.Po.Modifications;
@@ -104,7 +104,7 @@ public class UltPoints {
             basePoints = PrimeMillilat.requiredPoints;
         } else if (n == 16) {
             basePoints = Musket.requiredPoints;
-        }  else if (n == Configuration.maxWaffen+1) {
+        }  else if (n >= Configuration.maxWaffen) {
             basePoints = Testing.requiredPoints;
         } else {
             return 0;
@@ -144,7 +144,7 @@ public class UltPoints {
         } else if (n == 14) { // Meteor
             basePoints = 8;
         }  else if (n == Configuration.maxWaffen+1) {  // Test weapon is kit 14 (maxWaffen+1)
-            basePoints = 9;
+            basePoints = 0;
         } else {
             return 0;
         }

@@ -1,7 +1,8 @@
 package mc.cws.paintOff.Ultimates;
 
-import mc.cws.paintOff.Configuration;
 import mc.cws.paintOff.Game.Extras.Painter;
+import mc.cws.paintOff.Game.Management.InGame.DamageDealer;
+import mc.cws.paintOff.Game.Management.InGame.Game;
 import mc.cws.paintOff.Game.Resources.UltPoints;
 import mc.cws.paintOff.Game.Management.Start;
 import mc.cws.paintOff.Game.Management.Stop;
@@ -9,16 +10,16 @@ import mc.cws.paintOff.Game.Management.Verteiler;
 import mc.cws.paintOff.PaintOffMain;
 import org.bukkit.*;
 import org.bukkit.block.Block;
-import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.util.Vector;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class Tornedo {
     private static PaintOffMain plugin;
@@ -27,11 +28,15 @@ public class Tornedo {
 
     public static int requiredPoints = 0;
     public static int lifecycle = 5;
-    public static int schaden = 16;
+    public static int schaden = 8;
     public static int explosion = 6;
     public static double geschwindigkeitMult = 1.5;
     public static double startSpeed = 0.25;
-    public static int[] rangeAddition = new int[Configuration.maxQueues];
+    public static double beamLength = 100.0;
+    public static double helixRadius = 2.5;
+    public static double helixFrequency = -2.0;
+    public static int prepTime = 4;
+    public static int time = (prepTime*2)+2;
 
     public static void getItem(Player player) {
         ItemStack carrot = new ItemStack(Material.POINTED_DRIPSTONE, 1);
@@ -64,82 +69,101 @@ public class Tornedo {
     }
 
     public static void launch(Player player) {
-        // Play custom sound
         player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_HAT, 0.1f, 2.0f);
         int n = Start.getQueueNumber(player);
+        String team = Verteiler.getTeam(player,n);
 
-        // Launch arrow with reduced gravity and speed
-        Arrow arrow = player.launchProjectile(Arrow.class);
-        arrow.setGravity(false); // Disable gravity
-        double speed = Tornedo.geschwindigkeitMult;
-        arrow.setVelocity(player.getLocation().getDirection().multiply(Tornedo.startSpeed)); // Slow speed
-        arrow.setGlowing(true);
-        arrow.setMetadata("spawnedBy", new FixedMetadataValue(plugin, "Tornedo"));
+        Location startLoc = player.getLocation().clone();
+        startLoc.add(0,1,0);
+        Vector direction = startLoc.getDirection().normalize();
 
-        // Add particle trail
-        String colorPara = Painter.getColorPara(player);
-        Bukkit.getScheduler().runTaskTimer(plugin, () -> {
-            if (arrow.isDead() || !arrow.isValid()) {
-                return;
-            }
-            Location loc = arrow.getLocation();
-            Verteiler.playColorParticleBubble(colorPara, arrow.getLocation(), 0.1, 1, 0.1, Particle.DUST);
-            arrow.getWorld().spawnParticle(Particle.SOUL_FIRE_FLAME, loc, 1, 0.1, 0.1, 0.1, 0.001);
-        }, 0, 1);
-        Bukkit.getScheduler().runTaskTimer(plugin, () -> {
-            if (arrow.isDead() || !arrow.isValid()) {
-                return;
-            }
-            Vector velocity = arrow.getVelocity();
-
-            // Multipliziere die Geschwindigkeit mit 0.99 (nur 1% Abbremsung)
-            velocity.multiply(speed);
-
-            // Setze die neue Geschwindigkeit
-            arrow.setVelocity(velocity);
-
-            Location loc = arrow.getLocation();
-            rangeAddition[n] += 1;
-            if (rangeAddition[n] > Tornedo.lifecycle) {
-                arrow.getWorld().spawnParticle(Particle.FIREWORK, loc, 50, 0.1, 0.1, 0.1, 0.1);
-                Block block = loc.getBlock();
-                phaseOne(block,player,n);
-                arrow.remove();
-                rangeAddition[n] = 0;
-                return;
-            }
-            arrow.getWorld().spawnParticle(Particle.SONIC_BOOM, loc, 1, 0.1, 0.1, 0.1, 0.1);
-        }, 0, 20);
-    }
-
-    public static void phaseOne(Block hitBlock, Player player, int n) {
-        String team = Verteiler.getTeam(player, n);
-        if (team == null || !team.equals("A") && !team.equals("B")) {
-            return;
-        }
-        String color = team.equals("A") ? Stop.getColorNameA(n) : Stop.getColorNameB(n);
-        if (rangeAddition[n] > lifecycle) {
-            rangeAddition[n] = lifecycle;
-        }
-        String colorPara = Painter.getColorPara(player);
         AtomicBoolean stop = new AtomicBoolean(false);
-        Bukkit.getScheduler().scheduleSyncRepeatingTask(plugin, () -> {
+        AtomicBoolean prep = new AtomicBoolean(false);
+        String colorPara = Painter.getColorPara(player);
+        String colorName = team.equals("A") ? Stop.getColorNameA(n) : Stop.getColorNameB(n);
+
+        final int[] rotationCounter = {0};
+
+        Bukkit.getScheduler().runTaskTimer(plugin, () -> {
+            if (prep.get()) {
+                return;
+            }
+            rotationCounter[0]++;
+            for (double d = 0; d <= beamLength; d += 0.75) {
+                Location beamLoc = startLoc.clone().add(direction.clone().multiply(d));
+                double angle = d * helixFrequency + (rotationCounter[0] * 0.5);
+
+                Vector axis1 = direction.clone().crossProduct(new Vector(1, 0, 0));
+                if (axis1.lengthSquared() < 0.01) {
+                    axis1 = direction.clone().crossProduct(new Vector(0, 1, 0));
+                }
+                if (axis1.lengthSquared() < 0.01) {
+                    axis1 = direction.clone().crossProduct(new Vector(0, 0, 1));
+                }
+                axis1.normalize();
+
+                Vector axis2 = direction.clone().crossProduct(axis1).normalize();
+
+                double offsetX = helixRadius * (Math.cos(angle) * axis1.getX() + Math.sin(angle) * axis2.getX());
+                double offsetY = helixRadius * (Math.cos(angle) * axis1.getY() + Math.sin(angle) * axis2.getY());
+                double offsetZ = helixRadius * (Math.cos(angle) * axis1.getZ() + Math.sin(angle) * axis2.getZ());
+
+                beamLoc.add(offsetX, offsetY, offsetZ);
+                Verteiler.playColorParticleBubble(colorPara, beamLoc, 0.05, 1, 0.05, Particle.DUST);
+            }
+        }, 0, 2);
+        Bukkit.getScheduler().runTaskTimer(plugin, () -> {
             if (stop.get()) {
                 return;
             }
-            hitBlock.getWorld().playSound(hitBlock.getLocation(), Sound.ENTITY_BREEZE_CHARGE, 1.0f, 0.5f);
-            hitBlock.getWorld().playSound(hitBlock.getLocation(), Sound.ENTITY_BREEZE_IDLE_GROUND, 1.0f, 1.5f);
-            hitBlock.getWorld().spawnParticle(Particle.TOTEM_OF_UNDYING, hitBlock.getLocation().add(0,  0.75, 0), 10, 0.1, 0.1, 0.1, 0.5);
-            Verteiler.playColorParticleBubble(colorPara, hitBlock.getLocation(), 6, 40, 6, Particle.DUST);
-            hitBlock.getWorld().spawnParticle(Particle.FIREWORK, hitBlock.getLocation().add(0, 0, 0), 25, 3, 3, 3, 0.01);
-        },0,4);
+            if (prep.get()) {
+                rotationCounter[0]++;
+                for (double d = 0; d <= beamLength; d += 0.25) {
+                    Location beamLoc = startLoc.clone().add(direction.clone().multiply(d));
+                    if (team.equals("A")) {
+                        for (Player player1 : Verteiler.teamB.get(n)) {
+                            if (player1.getLocation().distance(beamLoc) <= helixRadius) {
+                                DamageDealer.dealDamage(player1, player, schaden);
+                            }
+                        }
+                    } else {
+                        for (Player player1 : Verteiler.teamA.get(n)) {
+                            if (player1.getLocation().distance(beamLoc) <= helixRadius) {
+                                DamageDealer.dealDamage(player1, player, schaden);
+                            }
+                        }
+                    }
+                    double angle = d * helixFrequency + (rotationCounter[0] * 0.25);
+
+                    Vector axis1 = direction.clone().crossProduct(new Vector(1, 0, 0));
+                    if (axis1.lengthSquared() < 0.01) {
+                        axis1 = direction.clone().crossProduct(new Vector(0, 1, 0));
+                    }
+                    if (axis1.lengthSquared() < 0.01) {
+                        axis1 = direction.clone().crossProduct(new Vector(0, 0, 1));
+                    }
+                    axis1.normalize();
+
+                    Vector axis2 = direction.clone().crossProduct(axis1).normalize();
+
+                    double offsetX = helixRadius * (Math.cos(angle) * axis1.getX() + Math.sin(angle) * axis2.getX());
+                    double offsetY = helixRadius * (Math.cos(angle) * axis1.getY() + Math.sin(angle) * axis2.getY());
+                    double offsetZ = helixRadius * (Math.cos(angle) * axis1.getZ() + Math.sin(angle) * axis2.getZ());
+
+                    beamLoc.add(offsetX, offsetY, offsetZ);
+                    Verteiler.playColorParticleBubble(colorPara, beamLoc, 0.05, 1, 0.05, Particle.DUST);
+                    AtomicReference<Block> block = new AtomicReference<>(beamLoc.getBlock());
+                    if (!block.get().getType().isAir()) {
+                        Painter.paintBlockWithoutUltpoint(block.get(), colorName, player);
+                    }
+                }
+            }
+        }, 0, 4);
         Bukkit.getScheduler().runTaskLater(plugin, () -> {
-            int worth = explosion -1;
             stop.set(true);
-            Painter.explosionAlgorithmWithoutUltpoint(hitBlock, player, n, worth, color, Tornedo.schaden);
-            hitBlock.getWorld().playSound(hitBlock.getLocation(), Sound.ENTITY_DRAGON_FIREBALL_EXPLODE, 2.0f, 0.01f);
-            hitBlock.getWorld().playSound(hitBlock.getLocation(), Sound.ENTITY_LIGHTNING_BOLT_THUNDER, 1.0f, 0.75f);
-            rangeAddition[n] = 0;
-        }, 20L * (lifecycle-rangeAddition[n]));
+        }, time * 20);
+        Bukkit.getScheduler().runTaskLater(plugin, () -> {
+            prep.set(true);
+        }, prepTime * 20);
     }
 }

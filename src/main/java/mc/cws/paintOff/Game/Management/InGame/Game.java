@@ -4,22 +4,22 @@ import mc.cws.paintOff.Configuration;
 import mc.cws.paintOff.Game.Arena.Arena;
 import mc.cws.paintOff.Game.Arena.ArenaAuswahl;
 import mc.cws.paintOff.Listener.ArsenalInventoryListener;
-import mc.cws.paintOff.PrimarysWeapons.Prime.PrimeMillilat;
+import mc.cws.paintOff.PrimaryWeapons.Prime.PrimeMillilat;
 import mc.cws.paintOff.Game.Resources.UltPoints;
 import mc.cws.paintOff.Game.Management.Queue;
 import mc.cws.paintOff.Game.Management.Start;
 import mc.cws.paintOff.Game.Management.Stop;
 import mc.cws.paintOff.Game.Management.Verteiler;
 import mc.cws.paintOff.Game.Shop.ShopInventory;
-import mc.cws.paintOff.PrimarysWeapons.Normal.Abwandlung.FiftySnipEx;
-import mc.cws.paintOff.PrimarysWeapons.Normal.Abwandlung.Pikolat;
-import mc.cws.paintOff.PrimarysWeapons.Haepec.HaeSchnipsLehr;
-import mc.cws.paintOff.PrimarysWeapons.Prime.PrimeSchweddler;
-import mc.cws.paintOff.PrimarysWeapons.Normal.*;
-import mc.cws.paintOff.PrimarysWeapons.Pyrex.PyrBlubber;
-import mc.cws.paintOff.PrimarysWeapons.Tulipa.TulQuinter;
-import mc.cws.paintOff.PrimarysWeapons.Tulipa.TulTriAtler;
-import mc.cws.paintOff.PrimarysWeapons.Pyrex.PyrTwentySniplEx;
+import mc.cws.paintOff.PrimaryWeapons.Normal.Abwandlung.FiftySnipEx;
+import mc.cws.paintOff.PrimaryWeapons.Normal.Abwandlung.Pikolat;
+import mc.cws.paintOff.PrimaryWeapons.Haepec.HaeSchnipsLehr;
+import mc.cws.paintOff.PrimaryWeapons.Prime.PrimeSchweddler;
+import mc.cws.paintOff.PrimaryWeapons.Normal.*;
+import mc.cws.paintOff.PrimaryWeapons.Pyrex.PyrBlubber;
+import mc.cws.paintOff.PrimaryWeapons.Tulipa.TulQuinter;
+import mc.cws.paintOff.PrimaryWeapons.Tulipa.TulTriAtler;
+import mc.cws.paintOff.PrimaryWeapons.Pyrex.PyrTwentySniplEx;
 import mc.cws.paintOff.SecondaryWeapons.*;
 import mc.cws.paintOff.SecondaryWeapons.Marker;
 import mc.cws.paintOff.Ultimates.*;
@@ -511,61 +511,7 @@ public class Game implements Listener {
     //--------------------------------------------------------------------------------------------------------------------
     @EventHandler
     public void onHit(ProjectileHitEvent event) {
-
-        if (event.getEntity() instanceof Arrow arrow) {
-            Player player = (Player) arrow.getShooter();
-            if (player == null) {
-                return;
-            }
-            int n = Start.getQueueNumber(player);
-            if (n == -1) {
-                return;
-            }
-            Block hitBlock = event.getHitBlock();
-            if (hitBlock == null) {
-                return;
-            }
-
-            String spawnedBy = "SchnipsLehr";
-            List<MetadataValue> metadata = arrow.getMetadata("spawnedBy");
-            if (!metadata.isEmpty()) {
-                spawnedBy = metadata.getFirst().asString();
-            }
-            Entity hitEntity = event.getHitEntity();
-            if (hitEntity instanceof Player hitPlayer) {
-                if (Verteiler.teamB.get(n).contains(hitPlayer) && Verteiler.teamA.get(n).contains(player)) {
-                    // Death
-                    if (spawnedBy.equals("Tornedo")) {// Add visual effects
-                        hitPlayer.getWorld().spawnParticle(Particle.CRIT, hitPlayer.getLocation().add(0.5, 1, 0.5), 2, 0.5, 0.5, 0.5, 0.1);
-                        dealDamage(hitPlayer, player, Configuration.killDamage);
-                        Tornedo.phaseOne(hitBlock, player, n);
-                        return;
-                    }
-                    dealDamage(hitPlayer, player, 1);
-                    return;
-                } else if (Verteiler.teamA.get(n).contains(hitPlayer) && Verteiler.teamB.get(n).contains(player)) {
-                    if (spawnedBy.equals("Tornedo")) {// Add visual effects
-                        hitPlayer.getWorld().spawnParticle(Particle.CRIT, hitPlayer.getLocation().add(0.5, 1, 0.5), 2, 0.5, 0.5, 0.5, 0.1);
-                        dealDamage(hitPlayer, player, Configuration.killDamage);
-                        Tornedo.phaseOne(hitBlock, player, n);
-                        return;
-                    }
-                    dealDamage(hitPlayer, player, 1);
-                    return;
-                }
-            }
-            if (spawnedBy.equals("Tornedo")) {
-                Tornedo.phaseOne(hitBlock, player, n);
-            }
-            List<Player> players = inGame.get(n);
-            if (players != null && players.contains(player) && player.isOnline()) {
-                arrow.remove();
-            }
-            return;
-        }
         if (event.getEntity() instanceof Snowball snowball) {
-
-            // Get the player who shot the snowball
             Player player = (Player) snowball.getShooter();
             if (player == null || !player.isOnline()) {
                 return;

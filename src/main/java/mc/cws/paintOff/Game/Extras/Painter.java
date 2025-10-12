@@ -36,7 +36,6 @@ public class Painter {
                 Points.givePoints(player, 1);
             }
             targetBlock.setType(Material.valueOf(colorName + Start.blockName[n]));
-
             Start.colored.put(player, Start.colored.get(player)+1);
             Start.teamColored[n][teamNumber][0]++;
             String colorPara = getColorPara(player);
@@ -57,22 +56,16 @@ public class Painter {
         if (team.equals("A")) {
             teamNumber = 0;
         }
-        if (!Unpaintables.isUnpaintable(targetBlock.getType(),targetBlock.getLocation()) && targetBlock.getType() != Material.AIR) {
-            if (Start.golding[n]) {
+        if (!Unpaintables.isUnpaintable(targetBlock.getType(),targetBlock.getLocation()) && targetBlock.getType() != Material.AIR && (targetBlock.getType() != Material.valueOf(color + getBlockType()))) {
+            if (Start.golding[n] && targetBlock.getType() != Material.GOLD_BLOCK) {
                 targetBlock.setType(Material.GOLD_BLOCK);
-                Start.colored.put(player, Start.colored.get(player)+1);
-                Start.teamColored[n][teamNumber][0]++;
-                String colorPara = Stop.getColorNameBack(color);
-                Verteiler.playColorParticle(colorPara, targetBlock.getLocation(), 0.5, 1, 0.9, Particle.DUST);
-                Objects.requireNonNull(targetBlock.getLocation().getWorld()).playSound(targetBlock.getLocation(), Sound.BLOCK_AMETHYST_BLOCK_PLACE, 0.25f, 2.0f);
-                return;
             }
             targetBlock.setType(Material.valueOf(color + Start.blockName[n]));
             Start.colored.put(player, Start.colored.get(player)+1);
             Start.teamColored[n][teamNumber][0]++;
-            String colorPara = Stop.getColorNameBack(color);
-            Verteiler.playColorParticle(colorPara, targetBlock.getLocation(), 0.5, 1, 0.9, Particle.DUST);
-            targetBlock.getLocation().getWorld().playSound(targetBlock.getLocation(), Sound.BLOCK_HONEY_BLOCK_PLACE, 0.25f, 2.0f);
+            String colorPara = getColorPara(player);
+            Verteiler.playColorParticle(colorPara, targetBlock.getLocation(), 0.5, 1, 1, Particle.DUST);
+            Objects.requireNonNull(targetBlock.getLocation().getWorld()).playSound(targetBlock.getLocation(), Sound.BLOCK_HONEY_BLOCK_PLACE, 0.25f, 2.0f);
         } else if (Resetables.resetable(targetBlock.getType()) && !Unpaintables.isUnpaintable(targetBlock.getType(),targetBlock.getLocation()) && targetBlock.getType() != Material.AIR && (targetBlock.getType() != Material.valueOf(color + "_WOOL"))) {
             targetBlock.setType(Material.AIR);
         }
