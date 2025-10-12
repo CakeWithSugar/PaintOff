@@ -181,7 +181,6 @@ public class Scoreboards {
         player.setScoreboard(scoreboard);
         playerScoreboards.put(player, scoreboard);
     }
-
     public static void removeScoreboard(Player player) {
         playerScoreboards.remove(player);
         player.setScoreboard(Objects.requireNonNull(Bukkit.getScoreboardManager()).getNewScoreboard());
