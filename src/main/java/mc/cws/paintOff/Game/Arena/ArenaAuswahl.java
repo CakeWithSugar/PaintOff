@@ -2,7 +2,7 @@ package mc.cws.paintOff.Game.Arena;
 
 import mc.cws.paintOff.Configuration;
 import mc.cws.paintOff.Game.Management.Queue;
-import mc.cws.paintOff.Game.Management.Scoreboards.Scoreboards;
+import mc.cws.paintOff.Scoreboards.Scoreboards;
 import mc.cws.paintOff.Game.Management.Start;
 import mc.cws.paintOff.PaintOffMain;
 import net.md_5.bungee.api.chat.TextComponent;

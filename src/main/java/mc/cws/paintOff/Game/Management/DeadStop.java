@@ -4,8 +4,8 @@ import mc.cws.paintOff.Configuration;
 import mc.cws.paintOff.Game.Arena.Arena;
 import mc.cws.paintOff.Game.Extras.ClearInventory;
 import mc.cws.paintOff.Game.Management.InGame.Game;
-import mc.cws.paintOff.Game.Management.Scoreboards.ColorTeam;
-import mc.cws.paintOff.Game.Management.Scoreboards.Scoreboards;
+import mc.cws.paintOff.Scoreboards.ColorTeam;
+import mc.cws.paintOff.Scoreboards.Scoreboards;
 import mc.cws.paintOff.Game.Shop.Lists;
 import mc.cws.paintOff.Game.Shop.ShopInventory;
 import mc.cws.paintOff.PaintOffMain;
@@ -17,7 +17,6 @@ import mc.cws.paintOff.Po.ArenaManager;
 import org.bukkit.potion.PotionEffectType;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class DeadStop {

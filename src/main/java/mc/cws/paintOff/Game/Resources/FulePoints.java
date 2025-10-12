@@ -1,7 +1,6 @@
 package mc.cws.paintOff.Game.Resources;
 
 import mc.cws.paintOff.Configuration;
-import mc.cws.paintOff.Game.Management.Scoreboards.Scoreboards;
 import mc.cws.paintOff.Game.Management.Start;
 import mc.cws.paintOff.Game.Management.Verteiler;
 import org.bukkit.entity.Player;

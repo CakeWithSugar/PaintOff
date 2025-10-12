@@ -5,7 +5,7 @@ import mc.cws.paintOff.Game.Arena.Arena;
 import mc.cws.paintOff.Game.Arena.ArenaAuswahl;
 import mc.cws.paintOff.Game.Extras.ClearInventory;
 import mc.cws.paintOff.Game.Resources.ExtraItems;
-import mc.cws.paintOff.Game.Management.Scoreboards.Scoreboards;
+import mc.cws.paintOff.Scoreboards.Scoreboards;
 import mc.cws.paintOff.PaintOffMain;
 import mc.cws.paintOff.Po.Modifications;
 import net.md_5.bungee.api.chat.TextComponent;

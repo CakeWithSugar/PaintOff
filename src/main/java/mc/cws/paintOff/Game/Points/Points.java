@@ -1,21 +1,15 @@
 package mc.cws.paintOff.Game.Points;
 
 import mc.cws.paintOff.Configuration;
-import mc.cws.paintOff.Game.Extras.Colorer;
-import mc.cws.paintOff.Game.Management.Scoreboards.Scoreboards;
 import mc.cws.paintOff.Game.Shop.Lists;
 import mc.cws.paintOff.Game.Shop.ShopInventory;
 import mc.cws.paintOff.Game.Management.Queue;
 import mc.cws.paintOff.Game.Management.Start;
-import mc.cws.paintOff.Game.Management.Verteiler;
 import mc.cws.paintOff.Po.Modifications;
-import net.md_5.bungee.api.ChatMessageType;
-import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
 import java.io.*;
-import java.util.Objects;
 
 public class Points {
     public static void addPoints(Player player, double points) {

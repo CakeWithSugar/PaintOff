@@ -1,7 +1,7 @@
 package mc.cws.paintOff.Po.Executors;
 
 import mc.cws.paintOff.Configuration;
-import mc.cws.paintOff.Game.Items.ArsenalInventoryListener;
+import mc.cws.paintOff.Listener.ArsenalInventoryListener;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;

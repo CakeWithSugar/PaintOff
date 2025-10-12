@@ -3,26 +3,26 @@ package mc.cws.paintOff.Game.Management.InGame;
 import mc.cws.paintOff.Configuration;
 import mc.cws.paintOff.Game.Arena.Arena;
 import mc.cws.paintOff.Game.Arena.ArenaAuswahl;
-import mc.cws.paintOff.Game.Items.ArsenalInventoryListener;
-import mc.cws.paintOff.Game.Items.Primarys.Prime.PrimeMillilat;
+import mc.cws.paintOff.Listener.ArsenalInventoryListener;
+import mc.cws.paintOff.PrimarysWeapons.Prime.PrimeMillilat;
 import mc.cws.paintOff.Game.Resources.UltPoints;
 import mc.cws.paintOff.Game.Management.Queue;
 import mc.cws.paintOff.Game.Management.Start;
 import mc.cws.paintOff.Game.Management.Stop;
 import mc.cws.paintOff.Game.Management.Verteiler;
 import mc.cws.paintOff.Game.Shop.ShopInventory;
-import mc.cws.paintOff.Game.Items.Primarys.None.Abwandlung.FiftySnipEx;
-import mc.cws.paintOff.Game.Items.Primarys.None.Abwandlung.Pikolat;
-import mc.cws.paintOff.Game.Items.Primarys.Haepec.HaeSchnipsLehr;
-import mc.cws.paintOff.Game.Items.Primarys.Prime.PrimeSchweddler;
-import mc.cws.paintOff.Game.Items.Primarys.None.*;
-import mc.cws.paintOff.Game.Items.Primarys.Pyrex.PyrBlubber;
-import mc.cws.paintOff.Game.Items.Primarys.Tulipa.TulQuinter;
-import mc.cws.paintOff.Game.Items.Primarys.Tulipa.TulTriAtler;
-import mc.cws.paintOff.Game.Items.Primarys.Pyrex.PyrTwentySniplEx;
-import mc.cws.paintOff.Game.Items.Secondarys.*;
-import mc.cws.paintOff.Game.Items.Secondarys.Marker;
-import mc.cws.paintOff.Game.Items.Ultimates.*;
+import mc.cws.paintOff.PrimarysWeapons.Normal.Abwandlung.FiftySnipEx;
+import mc.cws.paintOff.PrimarysWeapons.Normal.Abwandlung.Pikolat;
+import mc.cws.paintOff.PrimarysWeapons.Haepec.HaeSchnipsLehr;
+import mc.cws.paintOff.PrimarysWeapons.Prime.PrimeSchweddler;
+import mc.cws.paintOff.PrimarysWeapons.Normal.*;
+import mc.cws.paintOff.PrimarysWeapons.Pyrex.PyrBlubber;
+import mc.cws.paintOff.PrimarysWeapons.Tulipa.TulQuinter;
+import mc.cws.paintOff.PrimarysWeapons.Tulipa.TulTriAtler;
+import mc.cws.paintOff.PrimarysWeapons.Pyrex.PyrTwentySniplEx;
+import mc.cws.paintOff.SecondaryWeapons.*;
+import mc.cws.paintOff.SecondaryWeapons.Marker;
+import mc.cws.paintOff.Ultimates.*;
 import mc.cws.paintOff.Game.Extras.Painter;
 import mc.cws.paintOff.PaintOffMain;
 import mc.cws.paintOff.Po.Executors.PoLeave;
@@ -34,8 +34,6 @@ import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
-import org.bukkit.event.block.BlockBreakEvent;
-import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.entity.*;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.*;
@@ -295,11 +293,9 @@ public class Game implements Listener {
                     return;
                 }
                 if (item.getType() == Material.ECHO_SHARD && item.hasItemMeta() && Objects.requireNonNull(item.getItemMeta()).hasDisplayName() && item.getItemMeta().getDisplayName().equals(ChatColor.DARK_PURPLE + "Menu")) {
-                    // Create a new inventory for this player
                     int size = 18;
                     Inventory inventory = Bukkit.createInventory(null, size, TeleportInventoryListener.ARSENAL_TITLE);
 
-                    // Get team members
                     List<Player> currentPlayers = new ArrayList<>();
                     if (Verteiler.teamA.get(n).contains(player)) {
                         currentPlayers.addAll(Verteiler.teamA.get(n));
@@ -350,7 +346,6 @@ public class Game implements Listener {
                         Arsenal.setItemMeta(meta6);
                         inventory.setItem(8, Arsenal);
                     }
-                    // Setze Spielerköpfe über die Glascheiben
                     int slot = 1;
                     for (Player teamMember : currentPlayers) {
                         if (slot >= (Queue.maxSize/2)) break;
@@ -363,7 +358,7 @@ public class Game implements Listener {
                             lore.add(ChatColor.GRAY + "Klicke, um zu " + teamMember.getName() + " zu teleportieren");
                             meta.setLore(lore);
                             playerHead.setItemMeta(meta);
-                            inventory.setItem(slot, playerHead); // Spielerkopf ersetzt Glascheibe
+                            inventory.setItem(slot, playerHead);
                         }
                         slot++;
                     }
@@ -946,7 +941,6 @@ public class Game implements Listener {
                 task.cancel();
                 return;
             }
-            // Apply additional downward velocity
             snowball.setVelocity(snowball.getVelocity().add(new org.bukkit.util.Vector(0, -strength, 0)));
         }, 0L, 1L);
     }

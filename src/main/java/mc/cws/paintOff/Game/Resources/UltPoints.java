@@ -1,17 +1,16 @@
 package mc.cws.paintOff.Game.Resources;
 
 import mc.cws.paintOff.Configuration;
-import mc.cws.paintOff.Game.Items.Primarys.None.Abwandlung.FiftySnipEx;
-import mc.cws.paintOff.Game.Items.Primarys.None.Abwandlung.Pikolat;
-import mc.cws.paintOff.Game.Items.Primarys.Haepec.HaeSchnipsLehr;
-import mc.cws.paintOff.Game.Items.Primarys.Prime.PrimeMillilat;
-import mc.cws.paintOff.Game.Items.Primarys.Prime.PrimeSchweddler;
-import mc.cws.paintOff.Game.Items.Primarys.Pyrex.PyrTwentySniplEx;
-import mc.cws.paintOff.Game.Items.Primarys.None.*;
-import mc.cws.paintOff.Game.Items.Primarys.Pyrex.PyrBlubber;
-import mc.cws.paintOff.Game.Items.Primarys.Tulipa.TulQuinter;
-import mc.cws.paintOff.Game.Items.Primarys.Tulipa.TulTriAtler;
-import mc.cws.paintOff.Game.Management.Scoreboards.Scoreboards;
+import mc.cws.paintOff.PrimarysWeapons.Normal.Abwandlung.FiftySnipEx;
+import mc.cws.paintOff.PrimarysWeapons.Normal.Abwandlung.Pikolat;
+import mc.cws.paintOff.PrimarysWeapons.Haepec.HaeSchnipsLehr;
+import mc.cws.paintOff.PrimarysWeapons.Prime.PrimeMillilat;
+import mc.cws.paintOff.PrimarysWeapons.Prime.PrimeSchweddler;
+import mc.cws.paintOff.PrimarysWeapons.Pyrex.PyrTwentySniplEx;
+import mc.cws.paintOff.PrimarysWeapons.Normal.*;
+import mc.cws.paintOff.PrimarysWeapons.Pyrex.PyrBlubber;
+import mc.cws.paintOff.PrimarysWeapons.Tulipa.TulQuinter;
+import mc.cws.paintOff.PrimarysWeapons.Tulipa.TulTriAtler;
 import mc.cws.paintOff.Game.Management.Start;
 import mc.cws.paintOff.Game.Management.Verteiler;
 import mc.cws.paintOff.Po.Modifications;

@@ -3,7 +3,7 @@ package mc.cws.paintOff.Po;
 import mc.cws.paintOff.Configuration;
 import mc.cws.paintOff.Game.Arena.Arena;
 import mc.cws.paintOff.Game.Extras.Colorer;
-import mc.cws.paintOff.Game.Items.ArsenalInventoryListener;
+import mc.cws.paintOff.Listener.ArsenalInventoryListener;
 import mc.cws.paintOff.Game.Management.InGame.Game;
 import mc.cws.paintOff.Game.Management.Queue;
 import mc.cws.paintOff.Game.Management.Start;
@@ -160,8 +160,6 @@ public class TeleportInventoryListener implements Listener {
                 inventory.setItem(slot, playerHead);
                 slot++;
             }
-
-            System.out.println("TeleportInventoryListener: Finished setting up inventory items");
         }
     }
 
@@ -214,7 +212,6 @@ public class TeleportInventoryListener implements Listener {
             lore.add(ChatColor.GRAY + "Klicke, um zum Spawn zu teleportieren");
             meta.setLore(lore);
             spawn.setItemMeta(meta);
-            System.out.println("TeleportInventoryListener: Created spawn item");
             return spawn;
         } catch (Exception e) {
             System.out.println("TeleportInventoryListener: Error creating spawn item: " + e.getMessage());

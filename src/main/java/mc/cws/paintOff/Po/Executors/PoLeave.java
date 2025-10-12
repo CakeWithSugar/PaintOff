@@ -7,7 +7,7 @@ import mc.cws.paintOff.Game.Management.*;
 import mc.cws.paintOff.Game.Management.DeadStop;
 import mc.cws.paintOff.Game.Management.InGame.Game;
 import mc.cws.paintOff.Game.Management.Queue;
-import mc.cws.paintOff.Game.Management.Scoreboards.Scoreboards;
+import mc.cws.paintOff.Scoreboards.Scoreboards;
 import mc.cws.paintOff.Game.Management.Start;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;

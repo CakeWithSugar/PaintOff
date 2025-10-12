@@ -2,7 +2,7 @@ package mc.cws.paintOff.Game.Management.InGame;
 
 import mc.cws.paintOff.Configuration;
 import mc.cws.paintOff.Game.Arena.Arena;
-import mc.cws.paintOff.Game.Items.ArsenalInventoryListener;
+import mc.cws.paintOff.Listener.ArsenalInventoryListener;
 import mc.cws.paintOff.Game.Management.Start;
 import mc.cws.paintOff.Game.Management.Verteiler;
 import mc.cws.paintOff.Game.Points.Points;

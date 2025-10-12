@@ -151,5 +151,36 @@ public class Underpaintable {
         underpaintableBlocks.add(Material.PALE_OAK_LEAVES);
         underpaintableBlocks.add(Material.AZALEA_LEAVES);
         underpaintableBlocks.add(Material.FLOWERING_AZALEA_LEAVES);
+
+        underpaintableBlocks.add(Material.OAK_SHELF);
+        underpaintableBlocks.add(Material.BIRCH_SHELF);
+        underpaintableBlocks.add(Material.DARK_OAK_SHELF);
+        underpaintableBlocks.add(Material.JUNGLE_SHELF);
+        underpaintableBlocks.add(Material.SPRUCE_SHELF);
+        underpaintableBlocks.add(Material.MANGROVE_SHELF);
+        underpaintableBlocks.add(Material.CHERRY_SHELF);
+        underpaintableBlocks.add(Material.PALE_OAK_SHELF);
+        underpaintableBlocks.add(Material.BAMBOO_SHELF);
+        underpaintableBlocks.add(Material.ACACIA_SHELF);
+        underpaintableBlocks.add(Material.WARPED_SHELF);
+        underpaintableBlocks.add(Material.CRIMSON_SHELF);
+
+        underpaintableBlocks.add(Material.GLASS_PANE);
+        underpaintableBlocks.add(Material.BLACK_STAINED_GLASS_PANE);
+        underpaintableBlocks.add(Material.BLUE_STAINED_GLASS_PANE);
+        underpaintableBlocks.add(Material.BROWN_STAINED_GLASS_PANE);
+        underpaintableBlocks.add(Material.CYAN_STAINED_GLASS_PANE);
+        underpaintableBlocks.add(Material.GRAY_STAINED_GLASS_PANE);
+        underpaintableBlocks.add(Material.GREEN_STAINED_GLASS_PANE);
+        underpaintableBlocks.add(Material.LIGHT_BLUE_STAINED_GLASS_PANE);
+        underpaintableBlocks.add(Material.LIGHT_GRAY_STAINED_GLASS_PANE);
+        underpaintableBlocks.add(Material.LIME_STAINED_GLASS_PANE);
+        underpaintableBlocks.add(Material.MAGENTA_STAINED_GLASS_PANE);
+        underpaintableBlocks.add(Material.ORANGE_STAINED_GLASS_PANE);
+        underpaintableBlocks.add(Material.PINK_STAINED_GLASS_PANE);
+        underpaintableBlocks.add(Material.PURPLE_STAINED_GLASS_PANE);
+        underpaintableBlocks.add(Material.RED_STAINED_GLASS_PANE);
+        underpaintableBlocks.add(Material.WHITE_STAINED_GLASS_PANE);
+        underpaintableBlocks.add(Material.YELLOW_STAINED_GLASS_PANE);
     }
 }

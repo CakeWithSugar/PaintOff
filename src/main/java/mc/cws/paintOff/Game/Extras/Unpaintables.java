@@ -14,9 +14,7 @@ public class Unpaintables {
         unpaintableBlocks.add(Material.AIR);
         unpaintableBlocks.add(Material.WATER);
         unpaintableBlocks.add(Material.LAVA);
-        
-        // Add all stair blocks
-        // Wood stairs
+
         unpaintableBlocks.add(Material.ACACIA_STAIRS);
         unpaintableBlocks.add(Material.BIRCH_STAIRS);
         unpaintableBlocks.add(Material.DARK_OAK_STAIRS);
@@ -26,53 +24,31 @@ public class Unpaintables {
         unpaintableBlocks.add(Material.MANGROVE_STAIRS);
         unpaintableBlocks.add(Material.CHERRY_STAIRS);
         unpaintableBlocks.add(Material.PALE_OAK_STAIRS);
-        
-        // Nether-related stairs
         unpaintableBlocks.add(Material.WARPED_STAIRS);
         unpaintableBlocks.add(Material.CRIMSON_STAIRS);
-        
-        // Stone stairs
         unpaintableBlocks.add(Material.STONE_STAIRS);
         unpaintableBlocks.add(Material.COBBLESTONE_STAIRS);
         unpaintableBlocks.add(Material.MOSSY_COBBLESTONE_STAIRS);
         unpaintableBlocks.add(Material.END_STONE_BRICK_STAIRS);
         unpaintableBlocks.add(Material.PURPUR_STAIRS);
-
-        // Nether brick stairs
         unpaintableBlocks.add(Material.NETHER_BRICK_STAIRS);
         unpaintableBlocks.add(Material.RED_NETHER_BRICK_STAIRS);
-        
-        // Sandstone stairs
         unpaintableBlocks.add(Material.SANDSTONE_STAIRS);
         unpaintableBlocks.add(Material.RED_SANDSTONE_STAIRS);
-        
-        // Stone brick stairs
         unpaintableBlocks.add(Material.STONE_BRICK_STAIRS);
         unpaintableBlocks.add(Material.MOSSY_STONE_BRICK_STAIRS);
-        
-        // Polished stone stairs
         unpaintableBlocks.add(Material.POLISHED_ANDESITE_STAIRS);
         unpaintableBlocks.add(Material.POLISHED_DIORITE_STAIRS);
         unpaintableBlocks.add(Material.POLISHED_GRANITE_STAIRS);
-        
-        // Basic stone stairs
         unpaintableBlocks.add(Material.ANDESITE_STAIRS);
         unpaintableBlocks.add(Material.DIORITE_STAIRS);
         unpaintableBlocks.add(Material.GRANITE_STAIRS);
-        
-        // Brick stairs
         unpaintableBlocks.add(Material.BRICK_STAIRS);
-        
-        // Prismarine stairs
         unpaintableBlocks.add(Material.PRISMARINE_STAIRS);
         unpaintableBlocks.add(Material.PRISMARINE_BRICK_STAIRS);
         unpaintableBlocks.add(Material.DARK_PRISMARINE_STAIRS);
-        
-        // Quartz stairs
         unpaintableBlocks.add(Material.QUARTZ_STAIRS);
         unpaintableBlocks.add(Material.SMOOTH_QUARTZ_STAIRS);
-        
-        // Copper stairs
         unpaintableBlocks.add(Material.CUT_COPPER_STAIRS);
         unpaintableBlocks.add(Material.EXPOSED_CUT_COPPER_STAIRS);
         unpaintableBlocks.add(Material.WEATHERED_CUT_COPPER_STAIRS);
@@ -85,28 +61,16 @@ public class Unpaintables {
         unpaintableBlocks.add(Material.TUFF_BRICK_STAIRS);
         unpaintableBlocks.add(Material.TUFF_STAIRS);
         unpaintableBlocks.add(Material.POLISHED_TUFF_STAIRS);
-
-        // Copper slabs
-        unpaintableBlocks.add(Material.CUT_COPPER_SLAB);
-        unpaintableBlocks.add(Material.EXPOSED_CUT_COPPER_SLAB);
-        unpaintableBlocks.add(Material.WEATHERED_CUT_COPPER_SLAB);
-        unpaintableBlocks.add(Material.OXIDIZED_CUT_COPPER_SLAB);
-        unpaintableBlocks.add(Material.WAXED_CUT_COPPER_SLAB);
-        unpaintableBlocks.add(Material.WAXED_EXPOSED_CUT_COPPER_SLAB);
-        unpaintableBlocks.add(Material.WAXED_WEATHERED_CUT_COPPER_SLAB);
-        unpaintableBlocks.add(Material.WAXED_OXIDIZED_CUT_COPPER_SLAB);
-        unpaintableBlocks.add(Material.TUFF_SLAB);
-
-        // Bamboo stairs
         unpaintableBlocks.add(Material.BAMBOO_STAIRS);
         unpaintableBlocks.add(Material.BAMBOO_MOSAIC_STAIRS);
-        
-        // Smooth stone stairs
         unpaintableBlocks.add(Material.SMOOTH_RED_SANDSTONE_STAIRS);
         unpaintableBlocks.add(Material.SMOOTH_SANDSTONE_STAIRS);
+        unpaintableBlocks.add(Material.POLISHED_BLACKSTONE_STAIRS);
+        unpaintableBlocks.add(Material.POLISHED_BLACKSTONE_BRICK_STAIRS);
+        unpaintableBlocks.add(Material.DEEPSLATE_BRICK_STAIRS);
+        unpaintableBlocks.add(Material.DEEPSLATE_TILE_STAIRS);
+        unpaintableBlocks.add(Material.POLISHED_DEEPSLATE_STAIRS);
 
-        // All fence blocks
-        // Wood fences
         unpaintableBlocks.add(Material.ACACIA_FENCE);
         unpaintableBlocks.add(Material.BIRCH_FENCE);
         unpaintableBlocks.add(Material.DARK_OAK_FENCE);
@@ -144,6 +108,25 @@ public class Unpaintables {
         unpaintableBlocks.add(Material.RED_SANDSTONE_WALL);
         unpaintableBlocks.add(Material.SANDSTONE_WALL);
         unpaintableBlocks.add(Material.STONE_BRICK_WALL);
+        unpaintableBlocks.add(Material.TUFF_WALL);
+        unpaintableBlocks.add(Material.POLISHED_TUFF_WALL);
+        unpaintableBlocks.add(Material.TUFF_BRICK_WALL);
+        unpaintableBlocks.add(Material.POLISHED_DEEPSLATE_WALL);
+        unpaintableBlocks.add(Material.DEEPSLATE_BRICK_WALL);
+        unpaintableBlocks.add(Material.DEEPSLATE_TILE_WALL);
+
+        unpaintableBlocks.add(Material.OAK_SHELF);
+        unpaintableBlocks.add(Material.BIRCH_SHELF);
+        unpaintableBlocks.add(Material.DARK_OAK_SHELF);
+        unpaintableBlocks.add(Material.JUNGLE_SHELF);
+        unpaintableBlocks.add(Material.SPRUCE_SHELF);
+        unpaintableBlocks.add(Material.MANGROVE_SHELF);
+        unpaintableBlocks.add(Material.CHERRY_SHELF);
+        unpaintableBlocks.add(Material.PALE_OAK_SHELF);
+        unpaintableBlocks.add(Material.BAMBOO_SHELF);
+        unpaintableBlocks.add(Material.ACACIA_SHELF);
+        unpaintableBlocks.add(Material.WARPED_SHELF);
+        unpaintableBlocks.add(Material.CRIMSON_SHELF);
 
         // All leaf blocks
         unpaintableBlocks.add(Material.ACACIA_LEAVES);
@@ -172,10 +155,7 @@ public class Unpaintables {
         unpaintableBlocks.add(Material.CRIMSON_DOOR);
         unpaintableBlocks.add(Material.WARPED_DOOR);
         unpaintableBlocks.add(Material.BAMBOO_DOOR);
-        unpaintableBlocks.add(Material.BLACK_STAINED_GLASS_PANE);
-        unpaintableBlocks.add(Material.WHITE_STAINED_GLASS_PANE);
         unpaintableBlocks.add(Material.GLASS);
-        unpaintableBlocks.add(Material.GLASS_PANE);
         unpaintableBlocks.add(Material.IRON_BARS);
 
         // All trapdoor blocks
@@ -251,6 +231,21 @@ public class Unpaintables {
         unpaintableBlocks.add(Material.ANDESITE_SLAB);
         unpaintableBlocks.add(Material.GRANITE_SLAB);
         unpaintableBlocks.add(Material.DIORITE_SLAB);
+        unpaintableBlocks.add(Material.TUFF_BRICK_SLAB);
+        unpaintableBlocks.add(Material.POLISHED_TUFF_SLAB);
+        unpaintableBlocks.add(Material.TUFF_SLAB);
+        unpaintableBlocks.add(Material.CUT_COPPER_SLAB);
+        unpaintableBlocks.add(Material.EXPOSED_CUT_COPPER_SLAB);
+        unpaintableBlocks.add(Material.WEATHERED_CUT_COPPER_SLAB);
+        unpaintableBlocks.add(Material.OXIDIZED_CUT_COPPER_SLAB);
+        unpaintableBlocks.add(Material.WAXED_CUT_COPPER_SLAB);
+        unpaintableBlocks.add(Material.WAXED_EXPOSED_CUT_COPPER_SLAB);
+        unpaintableBlocks.add(Material.WAXED_WEATHERED_CUT_COPPER_SLAB);
+        unpaintableBlocks.add(Material.WAXED_OXIDIZED_CUT_COPPER_SLAB);
+        unpaintableBlocks.add(Material.DEEPSLATE_BRICK_SLAB);
+        unpaintableBlocks.add(Material.DEEPSLATE_TILE_SLAB);
+        unpaintableBlocks.add(Material.POLISHED_DEEPSLATE_SLAB);
+
         // All fence gates
         unpaintableBlocks.add(Material.ACACIA_FENCE_GATE);
         unpaintableBlocks.add(Material.BIRCH_FENCE_GATE);
@@ -352,6 +347,24 @@ public class Unpaintables {
         unpaintableBlocks.add(Material.WHITE_STAINED_GLASS);
         unpaintableBlocks.add(Material.YELLOW_STAINED_GLASS);
         unpaintableBlocks.add(Material.TINTED_GLASS);
+
+        unpaintableBlocks.add(Material.BLACK_STAINED_GLASS_PANE);
+        unpaintableBlocks.add(Material.BLUE_STAINED_GLASS_PANE);
+        unpaintableBlocks.add(Material.BROWN_STAINED_GLASS_PANE);
+        unpaintableBlocks.add(Material.CYAN_STAINED_GLASS_PANE);
+        unpaintableBlocks.add(Material.GRAY_STAINED_GLASS_PANE);
+        unpaintableBlocks.add(Material.GREEN_STAINED_GLASS_PANE);
+        unpaintableBlocks.add(Material.LIGHT_BLUE_STAINED_GLASS_PANE);
+        unpaintableBlocks.add(Material.LIGHT_GRAY_STAINED_GLASS_PANE);
+        unpaintableBlocks.add(Material.LIME_STAINED_GLASS_PANE);
+        unpaintableBlocks.add(Material.MAGENTA_STAINED_GLASS_PANE);
+        unpaintableBlocks.add(Material.ORANGE_STAINED_GLASS_PANE);
+        unpaintableBlocks.add(Material.PINK_STAINED_GLASS_PANE);
+        unpaintableBlocks.add(Material.PURPLE_STAINED_GLASS_PANE);
+        unpaintableBlocks.add(Material.RED_STAINED_GLASS_PANE);
+        unpaintableBlocks.add(Material.WHITE_STAINED_GLASS_PANE);
+        unpaintableBlocks.add(Material.YELLOW_STAINED_GLASS_PANE);
+        unpaintableBlocks.add(Material.GLASS_PANE);
 
         unpaintableBlocks.add(Material.BARRIER);
         unpaintableBlocks.add(Material.LIGHT);

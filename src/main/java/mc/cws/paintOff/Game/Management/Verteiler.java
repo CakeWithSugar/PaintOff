@@ -1,7 +1,7 @@
 package mc.cws.paintOff.Game.Management;
 
 import mc.cws.paintOff.Configuration;
-import mc.cws.paintOff.Game.Management.Scoreboards.ColorTeam;
+import mc.cws.paintOff.Scoreboards.ColorTeam;
 import mc.cws.paintOff.Po.Modifications;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;

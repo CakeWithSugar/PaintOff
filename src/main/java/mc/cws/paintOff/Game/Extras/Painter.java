@@ -1,7 +1,7 @@
 package mc.cws.paintOff.Game.Extras;
 
 import mc.cws.paintOff.Game.Resources.UltPoints;
-import mc.cws.paintOff.Game.Items.Ultimates.GlitzerMeteor;
+import mc.cws.paintOff.Ultimates.GlitzerMeteor;
 import mc.cws.paintOff.Game.Management.Stop;
 import mc.cws.paintOff.Game.Points.Points;
 import mc.cws.paintOff.Game.Management.Start;

@@ -1,7 +1,7 @@
 package mc.cws.paintOff.Game.Resources;
 
 import mc.cws.paintOff.Game.Extras.Colorer;
-import mc.cws.paintOff.Game.Items.Secondarys.Vernebler;
+import mc.cws.paintOff.SecondaryWeapons.Vernebler;
 import mc.cws.paintOff.Game.Management.Queue;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
