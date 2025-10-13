@@ -390,6 +390,10 @@ public class Game implements Listener {
                 if (item.getType() == Material.IRON_PICKAXE && item.hasItemMeta() && Objects.requireNonNull(item.getItemMeta()).hasDisplayName() && item.getItemMeta().getDisplayName().equals(ChatColor.DARK_PURPLE + "Musket")) {
                     Musket.shoot(player);
                 }
+                if (item.getType() == Material.DIAMOND_PICKAXE && item.hasItemMeta() && Objects.requireNonNull(item.getItemMeta()).hasDisplayName() && item.getItemMeta().getDisplayName().equals(ChatColor.DARK_PURPLE + "Tulipa Musket")) {
+                    TulMusket.shoot(player);
+                }
+                
                 if (item.getType() == Material.GOLDEN_AXE && item.hasItemMeta() && Objects.requireNonNull(item.getItemMeta()).hasDisplayName() && item.getItemMeta().getDisplayName().equals(ChatColor.DARK_PURPLE + "Prime Millilat")) {
                     PrimeMillilat.shoot(player);
                 }

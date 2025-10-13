@@ -104,6 +104,8 @@ public class UltPoints {
             basePoints = PrimeMillilat.requiredPoints;
         } else if (n == 16) {
             basePoints = Musket.requiredPoints;
+        } else if (n == 17) {
+            basePoints = TulMusket.requiredPoints;
         }  else if (n >= Configuration.maxWaffen) {
             basePoints = Testing.requiredPoints;
         } else {

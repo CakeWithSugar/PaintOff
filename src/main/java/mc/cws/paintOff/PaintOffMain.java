@@ -134,6 +134,7 @@ public final class PaintOffMain extends JavaPlugin {
         PyrTwentySniplEx.setPlugin(this);
         PrimeMillilat.setPlugin(this);
         Musket.setPlugin(this);
+        TulMusket.setPlugin(this);
 
         Aufdecker.setPlugin(this);
         Klotzbombe.setPlugin(this);

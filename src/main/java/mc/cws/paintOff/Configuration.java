@@ -21,7 +21,7 @@ public class Configuration {
     public static int normalMaxSize = 4;
     public static int maxQueues = 20;
 
-    public final static int maxWaffen = 16;
+    public final static int maxWaffen = 17;
 
     public static int teleportTime = 6; // Seconds
     public static int killDamage = 20;

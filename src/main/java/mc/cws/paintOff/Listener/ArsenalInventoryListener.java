@@ -183,7 +183,14 @@ public class ArsenalInventoryListener implements Listener {
                     player.playSound(player.getLocation(), Sound.ENTITY_DOLPHIN_SPLASH, 0.25f, 3.0f);
                     player.playSound(player.getLocation(), Sound.ENTITY_DOLPHIN_AMBIENT, 0.5f, 1.0f);
                     player.sendMessage(ChatColor.GOLD + Configuration.name + " | " + ChatColor.GRAY + "Dein Arsenal wurde auf" + ChatColor.YELLOW + " Musket " + ChatColor.GRAY + " aktualisiert!");
-                } else if (clickedSlot == 49) {
+                } else if (clickedSlot == TulMusket.slot) {
+                   setKitNumber(player, 17);
+                    player.closeInventory();
+                    player.playSound(player.getLocation(), Sound.ENTITY_DOLPHIN_SPLASH, 0.25f, 3.0f);
+                    player.playSound(player.getLocation(), Sound.ENTITY_DOLPHIN_AMBIENT, 0.5f, 1.0f); 
+                    player.sendMessage(ChatColor.GOLD + Configuration.name + " | " + ChatColor.GRAY + "Dein Arsenal wurde auf" + ChatColor.YELLOW + " Tulipa Musket " + ChatColor.GRAY + " aktualisiert!");
+            
+            } else if (clickedSlot == 49) {
                     Random random = new Random();
                     int randomKitNumber = random.nextInt(Configuration.maxWaffen);
                     setKitNumber(player, randomKitNumber);
@@ -239,6 +246,7 @@ public class ArsenalInventoryListener implements Listener {
                 }
             }
             ARSENAL2.setItem(Musket.slot,Musket.arsenalDisplay());
+            ARSENAL2.setItem(TulMusket.slot,TulMusket.arsenalDisplay());
             ARSENAL2.setItem(49, createRandom());
             ARSENAL2.setItem(48, createNextSite(true));
         }
@@ -395,6 +403,8 @@ public class ArsenalInventoryListener implements Listener {
             inventory.setItem(slot, PrimeMillilat.arsenalDisplay());
         } else if (n == 16) {
             inventory.setItem(slot, Musket.arsenalDisplay());
+        } else if (n == 17) {
+            inventory.setItem(slot, TulMusket.arsenalDisplay());
         } else if (n == Configuration.maxWaffen+1) {
             inventory.setItem(slot, createTesting());
         }
@@ -474,6 +484,10 @@ public class ArsenalInventoryListener implements Listener {
             Musket.getItem(player);
             Vernebler.getItem(player);
             Gammablitzer.getItem(player);
+        } else if (n == 17) {
+            TulMusket.getItem(player);
+            Klotzmine.getItem(player);
+            Lauffeuer.getItem(player);
         } else if (n == Configuration.maxWaffen+1) {
             Testing.getItem(player);
             Dreifarber.getItem(player);
