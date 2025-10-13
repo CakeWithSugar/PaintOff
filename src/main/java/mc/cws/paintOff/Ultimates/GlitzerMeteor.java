@@ -63,13 +63,13 @@ public class GlitzerMeteor {
             System.err.println("Plugin ist null in launchGlitzerMeteor!");
             return;
         }
-
-        Snowball snowball = player.launchProjectile(Snowball.class);
+        
+        for (int i = 0; i <= 1; i++) {
+            Bukkit.getScheduler().runTaskLater(plugin, () -> {
+                Snowball snowball = player.launchProjectile(Snowball.class);
         snowball.setVelocity(player.getLocation().getDirection().multiply(0.8));
         snowball.setMetadata("spawnedBy", new FixedMetadataValue(plugin, "GlitzerMeteor"));
-
-        // Add particle trail
-        String colorPara = Painter.getColorPara(player);
+                String colorPara = Painter.getColorPara(player);
         Bukkit.getScheduler().runTaskTimer(plugin, () -> {
             if (snowball.isDead() || !snowball.isValid()) {
                 return;
@@ -78,8 +78,9 @@ public class GlitzerMeteor {
             Verteiler.playColorParticleBubble(colorPara, snowball.getLocation(), 0.1, 1, 0.1, Particle.DUST);
             snowball.getWorld().spawnParticle(Particle.FALLING_LAVA, loc, 5, 0.2, 0.2, 0.2, 0.1);
         }, 0, 2);
+            },i*15);
+        }
     }
-
     public static void phaseOne(Snowball snowball, Block hitBlock, Player player) {
         Snowball snowballChild = snowball.getWorld().spawn(snowball.getLocation().add(0,spawnhoehe,0), Snowball.class);
         Vector direction = snowball.getLocation().getDirection();
