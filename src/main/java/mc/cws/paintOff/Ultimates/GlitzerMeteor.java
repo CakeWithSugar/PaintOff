@@ -27,6 +27,8 @@ public class GlitzerMeteor {
     public static double speed = 0.1;
     public static int damage = 20;
 
+    public static int kugeln = 2;
+
     public static void getItem(Player player) {
         ItemStack carrot = new ItemStack(Material.FIRE_CHARGE, 1);
         ItemMeta meta = carrot.getItemMeta();
@@ -38,6 +40,7 @@ public class GlitzerMeteor {
             lore.add(ChatColor.GRAY + "Spawnhöhe: " + ChatColor.GOLD + spawnhoehe + ChatColor.DARK_GRAY + " Blöcke");
             lore.add(ChatColor.GRAY + "Explosionsradius: " + ChatColor.GOLD + (radius+1) + ChatColor.DARK_GRAY + " Blöcke");
             lore.add(ChatColor.GRAY + "Geschwindigkeit: " + ChatColor.GOLD + (-speed) + ChatColor.DARK_GRAY + " m/s");
+            lore.add(ChatColor.DARK_PURPLE + "Färberate: " + ChatColor.LIGHT_PURPLE + ChatColor.BOLD + kugeln +" Kugeln");
             meta.setLore(lore);
             carrot.setItemMeta(meta);
         }
@@ -64,7 +67,7 @@ public class GlitzerMeteor {
             return;
         }
         
-        for (int i = 0; i <= 1; i++) {
+        for (int i = 0; i <= kugeln-1; i++) {
             Bukkit.getScheduler().runTaskLater(plugin, () -> {
                 Snowball snowball = player.launchProjectile(Snowball.class);
         snowball.setVelocity(player.getLocation().getDirection().multiply(0.8));
